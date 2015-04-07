@@ -1,0 +1,35 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	margin: 5px 5px;
+
+}
+
+.container {
+	width: 400px;
+}
+
+.button, .message-box, .container .box {
+	float: right;
+	width: 300px;
+}
+
+.message-box {
+	height: 100px;
+}
+
+.above-button {
+	margin-bottom: 90px;
+}
+
+
+.button {
+	float: right;
+	width: 80px;
+}
