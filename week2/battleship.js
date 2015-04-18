@@ -1,8 +1,7 @@
 var ask = require('readline-sync');
-
+// Welcome message for fun :) 
 console.log( '\n      _~ \n   _~)_)_~\n  )_))_))_)\n  _!__!__!_\n  \\______t/' );
-console.log( '~~~~~~~~~~~~~\nBattleship 1.0\n' );
-// var 10 = ask.require( 'Enter grid size (eg. 3 for 3x3, 10 for 10x10): ' );
+console.log( '~~~~~~~~~~~~~\nBattleship 1.0' );
 
 // Object constructor for ships
 var shipObject = function (coordinates, ship, hit){
@@ -21,7 +20,7 @@ shipObject.prototype.hitShip = function( playerInputCoordinates ){
 	if ( matrix[playerInputCoordinates]['ship'] === true && matrix[playerInputCoordinates]['hit'] === undefined ) {
 		this.hit = true;
 		this.hit;
-	} else if ( matrix[playerInputCoordinates]['ship'] === true && matrix[playerInputCoordinates]['hit'] === true ) {
+	} else if ( matrix[playerInputCoordinates]['hit'] === true ) {
 		this.hit = 'Already hit';
 		this.hit;
 	} else {
@@ -58,31 +57,36 @@ while (maxShips < 3 ) {
 // Loop to accept correct input from user
 var point = '0';
 var continueCheck = 'y';
-var pointToProcess;
+var pointToHit;
 
 // While loop will keep looping until: 
 // a) correct format is used, b) user wants to stop by pressing 'n'
-while ( continueCheck != 'n' ) { 
+while ( continueCheck != 'n' && maxShips > 0) { 
 	// Lets the user know how many ships were created
-	console.log( 'There are ' + maxShips + ' pirate ships! \nFind them!\n');
-	
+	console.log( '\nThere are ' + maxShips + ' pirate ships! \nFind them!\n');
+	// Asks player for coordinates in format x,y
 	point = ask.question( 'Enter coordinates (x,y): ' ).replace(/\s/g, '');
-	pointToProcess = parseInt( point.replace(/,/g, '') );
-
-	console.log(matrix[pointToProcess]['hit']);
-
-	matrix[pointToProcess].hitShip(pointToProcess);
-
-	if ( matrix[pointToProcess]['ship'] === true && matrix[pointToProcess]['hit'] != 'Already hit' ) {
-		continueCheck = ask.question ( 'Hit! \nTry again? (Y/N): ' ).toLowerCase().trim();
-		maxShips--;
-	} else {
-		continueCheck = ask.question ( 'Missed! Boo :/ \nTry again? (Y/N): ' ).toLowerCase().trim();	
+	pointToHit = parseInt( point.replace(/,/g, '') );
+	// 'Hits' point and check if ship is present
+	matrix[pointToHit].hitShip(pointToHit);
+	// Checks if player hits or misses
+		if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] != 'Already hit' ) {
+			continueCheck = 
+				ask.question ( 'Got \'em! \n\nTry again? (Y/N): ' ).toLowerCase().trim();
+			maxShips--;
+		} else if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] === 'Already hit' ) {
+			continueCheck = 
+				ask.question ( 'You already tried that spot! \n\nTry again? (Y/N): ' ).toLowerCase().trim();
+		} else {
+			continueCheck = 
+				ask.question ( 'Missed! Slippery scum! \n\nTry again? (Y/N): ' ).toLowerCase().trim();	
+		}
+	// Asks if player wants the grid/map shown and displays it if input is not equal to n
+	var getVisualGrid = ask.question( 'Check clues (show map)? (Y/N)' ).toLowerCase().trim();
+	if ( getVisualGrid != 'n' ) { 
+		console.log( '\n' + showGrid() ); 
+		console.log( '\n* Priate Legend: M = Miss, X = Hit, 0 = unknown' );
 	}
-	console.log(matrix[pointToProcess]);
-
-	console.log( showGrid() );
-
 }
 
 // Function to display Grid reflecting misses and hits
@@ -91,7 +95,7 @@ function showGrid () {
 	for ( index = 0; index < matrix.length; index ++ ) {
 
 		if ( matrix[index]['hit'] === undefined ) { 
-			visualGrid +=  'O '; 
+			visualGrid +=  '0 '; 
 		} else if ( matrix[index]['hit'] === true ) {
 			visualGrid += 'X ';
 		} else {
