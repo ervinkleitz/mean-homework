@@ -28,6 +28,7 @@ shipObject.prototype.hitShip = function( playerInputCoordinates ){
 		this.hit;
 	}
 };
+
 // Matrix creation for grid
 var matrix = [];
 // x = x-coordinate
@@ -40,6 +41,7 @@ for ( var x = 0; x < 10; x++ ) {
         	matrix.push(z);
 	    }
 	}
+	
 // Code to create at least 3 ships
 var maxShips = 0;
 while (maxShips < 3 ) {
@@ -62,13 +64,17 @@ var pointToHit;
 // While loop will keep looping until: 
 // a) correct format is used, b) user wants to stop by pressing 'n'
 while ( continueCheck != 'n' && maxShips > 0) { 
+
 	// Lets the user know how many ships were created or are left
 	console.log( '\nPirate ships detected: ' + maxShips + ' \nFind the Pirate Armada!\n');
+
 	// Asks player for coordinates in format x,y
 	point = ask.question( 'Enter coordinates (x,y): ' ).replace(/\s/g, '');
 	pointToHit = parseInt( point.replace(/,/g, '') );
+
 	// 'Hits' point and check if ship is present
 	matrix[pointToHit].hitShip(pointToHit);
+
 	// Checks if player hits or misses
 		if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] != 'Already hit' ) {
 			continueCheck = 
@@ -81,6 +87,7 @@ while ( continueCheck != 'n' && maxShips > 0) {
 			continueCheck = 
 				ask.question ( 'Missed! Slippery scum! \n\nTry again? (Y/N): ' ).toLowerCase().trim();	
 		}
+
 	// Gives player the option to display map
 	var getVisualGrid = ask.question( 'Check clues (show map)? (Y/N)' ).toLowerCase().trim();
 	if ( getVisualGrid != 'n' ) { 
@@ -108,6 +115,6 @@ function showGrid () {
 			visualGrid += '\n'; 
 			}
 		}
-		
+
 	return visualGrid;
 }
