@@ -1,7 +1,7 @@
 var ask = require('readline-sync');
 // Welcome message for fun :) 
 console.log( '\n      _~ \n   _~)_)_~\n  )_))_))_)\n  _!__!__!_\n  \\______t/' );
-console.log( '~~~~~~~~~~~~~\nBattleship 1.0' );
+console.log( '~~~~~~~~~~~~~\nPirateship 1.0' );
 
 // Object constructor for ships
 var shipObject = function (coordinates, ship, hit){
@@ -10,7 +10,7 @@ var shipObject = function (coordinates, ship, hit){
   this.ship = ship;
 };
 // Method to create ships in the grid. NOTE: Chance is 1:5 to create a ship.
-shipObject.prototype.addShip = function(){
+shipObject.prototype.addShip = function() {
   var shipOrNoShip = Math.ceil( Math.random() * 5 );
   if ( shipOrNoShip > 1 ) { this.ship = false; this.ship; }
   else { this.ship = true; this.ship; }
@@ -62,8 +62,8 @@ var pointToHit;
 // While loop will keep looping until: 
 // a) correct format is used, b) user wants to stop by pressing 'n'
 while ( continueCheck != 'n' && maxShips > 0) { 
-	// Lets the user know how many ships were created
-	console.log( '\nThere are ' + maxShips + ' pirate ships! \nFind them!\n');
+	// Lets the user know how many ships were created or are left
+	console.log( '\nPirate ships detected: ' + maxShips + ' \nFind the Pirate Armada!\n');
 	// Asks player for coordinates in format x,y
 	point = ask.question( 'Enter coordinates (x,y): ' ).replace(/\s/g, '');
 	pointToHit = parseInt( point.replace(/,/g, '') );
@@ -81,12 +81,15 @@ while ( continueCheck != 'n' && maxShips > 0) {
 			continueCheck = 
 				ask.question ( 'Missed! Slippery scum! \n\nTry again? (Y/N): ' ).toLowerCase().trim();	
 		}
-	// Asks if player wants the grid/map shown and displays it if input is not equal to n
+	// Gives player the option to display map
 	var getVisualGrid = ask.question( 'Check clues (show map)? (Y/N)' ).toLowerCase().trim();
 	if ( getVisualGrid != 'n' ) { 
 		console.log( '\n' + showGrid() ); 
 		console.log( '\n* Priate Legend: M = Miss, X = Hit, 0 = unknown' );
 	}
+
+	// Display congratulatory message when there are no ships
+	if (maxShips === 0) console.log( '\nNO MORE PIRATE SCUM!' );	
 }
 
 // Function to display Grid reflecting misses and hits
@@ -105,5 +108,6 @@ function showGrid () {
 			visualGrid += '\n'; 
 			}
 		}
+		
 	return visualGrid;
 }
