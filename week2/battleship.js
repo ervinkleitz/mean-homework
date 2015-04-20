@@ -16,11 +16,11 @@ shipObject.prototype.addShip = function() {
   else { this.ship = true; this.ship; }
 };
 // Method to run when trying to hit a ship
-shipObject.prototype.hitShip = function( playerInputCoordinates ){
-	if ( matrix[playerInputCoordinates]['ship'] === true && matrix[playerInputCoordinates]['hit'] === undefined ) {
+shipObject.prototype.hitShip = function( playerInputCoords ){
+	if ( matrix[playerInputCoords]['ship'] === true && matrix[playerInputCoords]['hit'] === undefined ) {
 		this.hit = true;
 		this.hit;
-	} else if ( matrix[playerInputCoordinates]['hit'] === true ) {
+	} else if ( matrix[playerInputCoords]['hit'] === true ) {
 		this.hit = 'Already hit';
 		this.hit;
 	} else {
@@ -70,33 +70,39 @@ while ( continueCheck != 'n' && maxShips > 0) {
 
 	// Asks player for coordinates in format x,y
 	point = ask.question( 'Enter coordinates (x,y): ' ).replace(/\s/g, '');
-	pointToHit = parseInt( point.replace(/,/g, '') );
 
-	// 'Hits' point and check if ship is present
-	matrix[pointToHit].hitShip(pointToHit);
+	if ( point ) {
+		pointToHit = parseInt( point.replace(/,/g, '') );
 
-	// Checks if player hits or misses
-		if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] != 'Already hit' ) {
-			continueCheck = 
-				ask.question ( 'Got \'em! \n\nTry again? (Y/N): ' ).toLowerCase().trim();
-			maxShips--;
-		} else if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] === 'Already hit' ) {
-			continueCheck = 
-				ask.question ( 'You already tried that spot! \n\nTry again? (Y/N): ' ).toLowerCase().trim();
-		} else {
-			continueCheck = 
-				ask.question ( 'Missed! Slippery scum! \n\nTry again? (Y/N): ' ).toLowerCase().trim();	
+		// 'Hits' point and check if ship is present
+		matrix[pointToHit].hitShip(pointToHit);
+
+		// Checks if player hits or misses
+			if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] != 'Already hit' ) {
+				continueCheck = 
+					ask.question ( 'Got \'em! \n\nTry again? (Y/N): ' ).toLowerCase().trim();
+				maxShips--;
+			} else if ( matrix[pointToHit]['ship'] === true && matrix[pointToHit]['hit'] === 'Already hit' ) {
+				continueCheck = 
+					ask.question ( 'You already tried that spot! \n\nTry again? (Y/N): ' ).toLowerCase().trim();
+			} else {
+				continueCheck = 
+					ask.question ( 'Missed! Slippery scum! \n\nTry again? (Y/N): ' ).toLowerCase().trim();	
+			}
+
+		// Gives player the option to display map
+		var getVisualGrid = ask.question( 'Check clues (show map)? (Y/N)' ).toLowerCase().trim();
+		if ( getVisualGrid != 'n' ) { 
+			console.log( '\n' + showGrid() ); 
+			console.log( '\n* Priate Legend: M = Miss, X = Hit, 0 = unknown' );
 		}
 
-	// Gives player the option to display map
-	var getVisualGrid = ask.question( 'Check clues (show map)? (Y/N)' ).toLowerCase().trim();
-	if ( getVisualGrid != 'n' ) { 
-		console.log( '\n' + showGrid() ); 
-		console.log( '\n* Priate Legend: M = Miss, X = Hit, 0 = unknown' );
+		// Display congratulatory message when there are no ships
+		if (maxShips === 0) console.log( '\nNO MORE PIRATE SCUM!' );	
+	} else { 
+		console.log( 'Enter valid coordinates! Try again' );
 	}
 
-	// Display congratulatory message when there are no ships
-	if (maxShips === 0) console.log( '\nNO MORE PIRATE SCUM!' );	
 }
 
 // Function to display Grid reflecting misses and hits
