@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	// Hides the sad Tepig images
+	document.getElementById('tepig1').style.visibility = "hidden";
+	document.getElementById('tepig2').style.visibility = "hidden";
+	document.getElementById('tepig3').style.visibility = "hidden";
 
 	// Pokemon object constructor
 	var Pokemon = function( name, path ){
@@ -18,16 +22,26 @@ $(document).ready(function(){
 	var caterpie = new Pokemon( 'caterpie','assets/img/010.png' );
 	var metapod = new Pokemon( 'metapod','assets/img/011.png' );
 	var butterfree = new Pokemon( 'butterfree','assets/img/012.png' );
-
+	// Array for all Pokemon
 	var pokemonArray 
 		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
-
+	// Picks a random Pokemon
 	var whichPokemon = parseInt( Math.floor( Math.random() * 12 ) );
-
+	// Path for corresponding image for random Pokemon
 	var pokemonPath = pokemonArray[whichPokemon]['path'];
-
-	// document.getElementById('pokemon-image').src = pokemonPath;
-	// document.getElementById("pokemon-image").src=pokemonPath;
-	document.getElementById('pokemonimage').setAttribute("src",pokemonPath);
+	// Displays image of random Pokemon
+	document.getElementById('pokemonimage').setAttribute('src',pokemonPath);
+	
+	// Countdown timer
+	var counter = 9;
+	var timer = setInterval(countDown,1000)
+	function countDown(){
+		if ( counter >= 0 ) {
+			document.getElementById('timerdisplay').innerHTML = 'Time Remaining:<br>0:0' + counter;
+			counter --;
+		} else {
+			clearInterval(timer);
+		}
+	};
 
 });
