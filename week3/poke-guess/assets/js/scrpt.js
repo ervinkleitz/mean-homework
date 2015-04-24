@@ -41,7 +41,8 @@ $(document).ready(function(){
 			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] && counter > 0 ) {
 				console.log('Nice');
 				document.getElementById('correct').play();
-
+			} else {
+				document.getElementById('wrong').play();
 			}
 		didUserClick = true;
 	};
@@ -53,17 +54,25 @@ $(document).ready(function(){
 	var counter = 9;
 	var timer = setInterval( countDown, 1000 )
 	function countDown(){
-		if ( counter >= 0 ) {
+		if ( counter > 0 ) {
 			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 			counter --;
 		} else {
+			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 			clearInterval( timer );
-
+			document.getElementById('wrong').play();
+			losses++;
+			
+			switch ( losses ) {
+				case 1: document.getElementById('tepig1').style.visibility = 'visible';
+						console.log(losses); break;
+				case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
+				default: break;
+			}
+			
 		}
 	};
 
-	if ( userPokemonToCheck === randomPokemon['name'] ) {
-		console.log('Nice');
-	}
+
 
 });
