@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	// Hides the sad Tepig images
-	document.getElementById('tepig1').style.visibility = "hidden";
-	document.getElementById('tepig2').style.visibility = "hidden";
-	document.getElementById('tepig3').style.visibility = "hidden";
+	document.getElementById('tepig1').style.visibility = 'hidden';
+	document.getElementById('tepig2').style.visibility = 'hidden';
+	document.getElementById('tepig3').style.visibility = 'hidden';
 
 	// Pokemon object constructor
 	var Pokemon = function( name, path ){
@@ -26,22 +26,44 @@ $(document).ready(function(){
 	var pokemonArray 
 		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
 	// Picks a random Pokemon
-	var whichPokemon = parseInt( Math.floor( Math.random() * 12 ) );
+	var randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
 	// Path for corresponding image for random Pokemon
-	var pokemonPath = pokemonArray[whichPokemon]['path'];
+	var pokemonPath = pokemonArray[randomPokemon]['path'];
 	// Displays image of random Pokemon
 	document.getElementById('pokemonimage').setAttribute('src',pokemonPath);
-	
+
+	// onclick Function to keep HTML and JS separate
+	// Accepts user input and plays sound if it matches random Pokemon name within 10 seconds
+	var userPokemonToCheck = '';
+	var didUserClick = false;
+	var checkPokemon = function(){
+		userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
+			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] && counter > 0 ) {
+				console.log('Nice');
+				document.getElementById('correct').play();
+
+			}
+		didUserClick = true;
+	};
+
+	document.getElementById('sendPokemon').addEventListener('click', checkPokemon);
+
 	// Countdown timer
+	var losses = 0;
 	var counter = 9;
-	var timer = setInterval(countDown,1000)
+	var timer = setInterval( countDown, 1000 )
 	function countDown(){
 		if ( counter >= 0 ) {
-			document.getElementById('timerdisplay').innerHTML = 'Time Remaining:<br>0:0' + counter;
+			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 			counter --;
 		} else {
-			clearInterval(timer);
+			clearInterval( timer );
+
 		}
 	};
+
+	if ( userPokemonToCheck === randomPokemon['name'] ) {
+		console.log('Nice');
+	}
 
 });
