@@ -30,6 +30,7 @@ $(document).ready(function(){
 	// Function to pick a random Pokemon
 	var randomPokemon;
 	var pokemonPath;
+	
 	function getRandomPokemon(){
 
 		randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
@@ -41,14 +42,13 @@ $(document).ready(function(){
 
 	// Picks a random Pokemon
 	getRandomPokemon();
-	console.log(pokemonArray[randomPokemon]['name']);
 
 	// Accepts user input and plays sound if it matches random Pokemon name within 10 seconds
-	var userPokemonToCheck = '';
+	// var userPokemonToCheck = '';
 	var didUserClick = false;
-	var checkPokemon = function(){
+	function checkPokemon() {
 
-		userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
+		var userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
 
 			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] && counter > 0 ) {
 				document.getElementById('correct').play();
@@ -63,33 +63,45 @@ $(document).ready(function(){
 
 	// Countdown timer
 	var losses = 0;
-	var counter = 3;
-	var timer = setInterval( countDown, 1000 );
-	function countDown(){
+	mainTimer();
+	function mainTimer() {
+		var counter = 3;
+		var timer = setInterval( countDown, 1000 );
 
-		if ( counter > 0 ) {
-			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
-			counter --;
+		function countDown(){
 
-		} else {
-			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
-			clearInterval( timer );
-			document.getElementById('wrong').play();
-			losses++;
-			getRandomPokemon();
-			checkPokemon();
-			document.getElementById( 'inputPokemon' ).value = '';
+			if ( counter > 0 && losses < 3 ) {
+				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
+				counter --;
 
-			switch ( losses ) {
-				case 1: document.getElementById('tepig1').style.visibility = 'visible'; break;
-				case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
-				case 3: document.getElementById('tepig3').style.visibility = 'visible'; break;
+			} else if (counter <= 0 && losses < 3 ) {
+				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
+				// clearInterval( timer );
+				document.getElementById('wrong').play();
+				losses++;
+				clearInterval(timer);
+				mainTimer();
+				getRandomPokemon();
+				checkPokemon();
+				document.getElementById( 'inputPokemon' ).value = '';
+				document.getElementById( 'sendPokemon' ).addEventListener('click', checkPokemon);
 
-				default: break;
+				switch ( losses ) {
+					case 1: document.getElementById('tepig1').style.visibility = 'visible'; break;
+					case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
+					case 3: document.getElementById('tepig3').style.visibility = 'visible'; break;
+
+					default: break;
+				}
+
+			} else {
+				return;
 			}
 
+			// return;
 		}
-	};
 
+		return;
+	}
 
 });
