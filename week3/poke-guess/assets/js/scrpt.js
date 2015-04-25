@@ -41,6 +41,7 @@ $(document).ready(function(){
 
 	// Picks a random Pokemon
 	getRandomPokemon();
+	console.log(pokemonArray[randomPokemon]['name']);
 
 	// Accepts user input and plays sound if it matches random Pokemon name within 10 seconds
 	var userPokemonToCheck = '';
@@ -51,9 +52,13 @@ $(document).ready(function(){
 
 			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] && counter > 0 ) {
 				document.getElementById('correct').play();
+				console.log('yes');
+				console.log(userPokemonToCheck);
 
 			} else {
 				document.getElementById('wrong').play();
+				console.log('no');
+				console.log(userPokemonToCheck);
 			}
 
 		didUserClick = true;
@@ -63,7 +68,7 @@ $(document).ready(function(){
 
 	// Countdown timer
 	var losses = 0;
-	var counter = 9;
+	var counter = 3;
 	var timer = setInterval( countDown, 1000 );
 	function countDown(){
 
@@ -77,8 +82,11 @@ $(document).ready(function(){
 			document.getElementById('wrong').play();
 			losses++;
 			getRandomPokemon();
+			checkPokemon();
+			console.log(pokemonArray[randomPokemon]['name']);
 			document.getElementById( 'inputPokemon' ).value = '';
-
+			// var timer = setInterval( countDown, 1000 );
+			
 			switch ( losses ) {
 				case 1: document.getElementById('tepig1').style.visibility = 'visible'; break;
 				case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
@@ -89,7 +97,6 @@ $(document).ready(function(){
 
 		}
 	};
-
 
 
 });
