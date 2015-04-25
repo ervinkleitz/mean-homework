@@ -52,13 +52,8 @@ $(document).ready(function(){
 
 			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] && counter > 0 ) {
 				document.getElementById('correct').play();
-				console.log('yes');
-				console.log(userPokemonToCheck);
-
 			} else {
 				document.getElementById('wrong').play();
-				console.log('no');
-				console.log(userPokemonToCheck);
 			}
 
 		didUserClick = true;
@@ -83,10 +78,8 @@ $(document).ready(function(){
 			losses++;
 			getRandomPokemon();
 			checkPokemon();
-			console.log(pokemonArray[randomPokemon]['name']);
 			document.getElementById( 'inputPokemon' ).value = '';
-			// var timer = setInterval( countDown, 1000 );
-			
+
 			switch ( losses ) {
 				case 1: document.getElementById('tepig1').style.visibility = 'visible'; break;
 				case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
