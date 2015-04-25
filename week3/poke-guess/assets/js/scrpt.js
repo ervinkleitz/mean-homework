@@ -22,54 +22,71 @@ $(document).ready(function(){
 	var caterpie = new Pokemon( 'caterpie','assets/img/010.png' );
 	var metapod = new Pokemon( 'metapod','assets/img/011.png' );
 	var butterfree = new Pokemon( 'butterfree','assets/img/012.png' );
+
 	// Array for all Pokemon
 	var pokemonArray 
 		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
-	// Picks a random Pokemon
-	var randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
-	// Path for corresponding image for random Pokemon
-	var pokemonPath = pokemonArray[randomPokemon]['path'];
-	// Displays image of random Pokemon
-	document.getElementById('pokemonimage').setAttribute('src',pokemonPath);
+	
+	// Function to pick a random Pokemon
+	var randomPokemon;
+	var pokemonPath;
+	function getRandomPokemon(){
 
-	// onclick Function to keep HTML and JS separate
+		randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
+		// Path for corresponding image for random Pokemon
+		pokemonPath = pokemonArray[randomPokemon]['path'];
+		// Displays image of random Pokemon
+		document.getElementById('pokemonimage').setAttribute('src',pokemonPath);
+	}
+
+	// Picks a random Pokemon
+	getRandomPokemon();
+
 	// Accepts user input and plays sound if it matches random Pokemon name within 10 seconds
 	var userPokemonToCheck = '';
 	var didUserClick = false;
 	var checkPokemon = function(){
+
 		userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
+
 			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] && counter > 0 ) {
-				console.log('Nice');
 				document.getElementById('correct').play();
+
 			} else {
 				document.getElementById('wrong').play();
 			}
+
 		didUserClick = true;
 	};
 
-	document.getElementById('sendPokemon').addEventListener('click', checkPokemon);
+	document.getElementById( 'sendPokemon' ).addEventListener('click', checkPokemon);
 
 	// Countdown timer
 	var losses = 0;
 	var counter = 9;
-	var timer = setInterval( countDown, 1000 )
+	var timer = setInterval( countDown, 1000 );
 	function countDown(){
+
 		if ( counter > 0 ) {
 			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 			counter --;
+
 		} else {
 			document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 			clearInterval( timer );
 			document.getElementById('wrong').play();
 			losses++;
-			
+			getRandomPokemon();
+			document.getElementById( 'inputPokemon' ).value = '';
+
 			switch ( losses ) {
-				case 1: document.getElementById('tepig1').style.visibility = 'visible';
-						console.log(losses); break;
+				case 1: document.getElementById('tepig1').style.visibility = 'visible'; break;
 				case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
+				case 3: document.getElementById('tepig3').style.visibility = 'visible'; break;
+
 				default: break;
 			}
-			
+
 		}
 	};
 
