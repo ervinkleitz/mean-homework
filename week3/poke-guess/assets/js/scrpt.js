@@ -46,18 +46,16 @@ $(document).ready(function(){
 		var timer = setInterval( countDown, 1000 );
 
 		function countDown(){
-
-			console.log( 'isRight test: ' + isRight );
-
+			// Checks if player score has reached 5, if so, lets player know he/she has won
 			if ( score === 5 && losses < 3 ) { 
 				document.getElementById( 'win' ).play(); 
 				clearInterval( timer ); 
 				alert( 'You have won!' )
 				return; 
 			}
-
+			// Checks if player has had 3 wrong guesses, if so plays gameOver audio
 			if ( losses === 3 ) { document.getElementById( 'gameOver' ).play(); clearInterval( timer ); return; }
-
+			// If player has entered a wrong guess
 			if ( isRight === false ) {
 
 				if ( counter > 0 && losses < 3) {
@@ -72,17 +70,16 @@ $(document).ready(function(){
 					clearInterval( timer );
 					console.log(isRight);
 					repeatCountdown();
-
+					// Makes a Tepig visible for each loss
 					switch ( losses ) {
 						case 1: document.getElementById( 'tepig1' ).style.visibility = 'visible'; break;
 						case 2: document.getElementById( 'tepig2' ).style.visibility = 'visible'; break;
 						case 3: document.getElementById( 'tepig3' ).style.visibility = 'visible'; break;
-
 						default: break;
 					}
 
 				} else { return; }
-
+			// Runs if player has made a correct guess
 			} else {
 				clearInterval( timer );
 				repeatCountdown();
