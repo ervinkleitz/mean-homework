@@ -42,17 +42,21 @@ $(document).ready(function(){
 	mainTimer();
 
 	function mainTimer() {
-		var counter = 9;
+		var counter = 3;
 		var timer = setInterval( countDown, 1000 );
 
 		function countDown(){
 
 			console.log( 'isRight test: ' + isRight );
 
-			if ( score === 3 && losses < 3 ) { 
+			if ( score === 5 && losses < 3 ) { 
 				document.getElementById( 'win' ).play(); 
 				clearInterval( timer ); 
-				return; }
+				alert( 'You have won!' )
+				return; 
+			}
+
+			if ( losses === 3 ) { document.getElementById( 'gameOver' ).play(); clearInterval( timer ); return; }
 
 			if ( isRight === false ) {
 
@@ -83,11 +87,7 @@ $(document).ready(function(){
 				clearInterval( timer );
 				repeatCountdown();
 				isRight = false;
-
 			}
-
-
-
 		}
 
 		return;
