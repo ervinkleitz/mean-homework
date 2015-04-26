@@ -111,11 +111,11 @@ $(document).ready(function(){
 
 
 				switch( score ) {
-					case 1: document.getElementById( 'pokeball1' ).src = 'assets/img/pokeball.png'; break;
-					case 2: document.getElementById( 'pokeball2' ).src = 'assets/img/pokeball.png'; break;
-					case 3: document.getElementById( 'pokeball3' ).src = 'assets/img/pokeball.png'; break;
-					case 4: document.getElementById( 'pokeball4' ).src = 'assets/img/pokeball.png'; break;
-					case 5: document.getElementById( 'pokeball5' ).src = 'assets/img/pokeball.png'; break;
+					case 1: document.getElementById( 'pokeball1' ).src = 'assets/img/new_pokeball.png'; break;
+					case 2: document.getElementById( 'pokeball2' ).src = 'assets/img/premier_ball.png'; break;
+					case 3: document.getElementById( 'pokeball3' ).src = 'assets/img/greatball.png'; break;
+					case 4: document.getElementById( 'pokeball4' ).src = 'assets/img/ultraball.png'; break;
+					case 5: document.getElementById( 'pokeball5' ).src = 'assets/img/masterball.png'; break;
 					default: break;
 
 				repeatCountdown();
