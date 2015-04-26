@@ -29,7 +29,6 @@ $(document).ready(function(){
 
 	var randomPokemon, pokemonPath;
 	var score = 0;
-	var isRight = true;
 
 	// Picks a random Pokemon
 	getRandomPokemon();
@@ -41,16 +40,19 @@ $(document).ready(function(){
 	mainTimer();
 
 	function mainTimer() {
+		var isRight = false;
 		var counter = 9;
 		var timer = setInterval( countDown, 1000 );
 
 		function countDown(){
 
-			if ( counter > 0 && losses < 3 ) {
+			if ( score === 3 ) { document.getElementById( 'win' ).play(); clearInterval( timer ); return; }
+
+			if ( counter > 0 && losses < 3 && isRight === false ) {
 				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 				counter --;
 				// If player is unsuccessful or time runs out
-			} else if ( counter <= 0 && losses < 3 ) {
+			} else if ( counter <= 0 && losses < 3 && isRight === false ) {
 				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 				//Plays wrong sound
 				document.getElementById( 'wrong' ).play(); 
@@ -67,6 +69,11 @@ $(document).ready(function(){
 					default: break;
 				}
 
+			} else if ( counter > 0 && losses < 3 && isRight === true ) {
+				console.log( 'true' );
+				clearInterval( timer );
+				console.log( score );
+				
 			} else {
 				return;
 			}
@@ -92,7 +99,6 @@ $(document).ready(function(){
 				document.getElementById( 'correct' ).play();
 				score++;
 				isRight = true;
-				counter = 0;
 				console.log(score);
 			} else { 
 				document.getElementById( 'wrong' ).play(); 
