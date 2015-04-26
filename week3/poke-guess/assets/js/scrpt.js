@@ -42,7 +42,7 @@ $(document).ready(function(){
 	mainTimer();
 
 	function mainTimer() {
-		var counter = 3;
+		var counter = 9;
 		var timer = setInterval( countDown, 1000 );
 
 		function countDown(){
