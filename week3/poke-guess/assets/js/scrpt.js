@@ -27,10 +27,11 @@ $(document).ready(function(){
 	var pokemonArray 
 		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
 
-	var randomPokemon, pokemonPath
+	var randomPokemon, pokemonPath;
 	var isRight = false;
 	var score = 0;
 	var didUserClick = false;
+	var alreadyChosenPokemon = [];
 
 	// Picks a random Pokemon
 	getRandomPokemon();
@@ -124,14 +125,25 @@ $(document).ready(function(){
 			}
 		didUserClick = true;
 	}
-	// Picks random Pokemon
+	// Picks random Pokemon that hasn't already been shown
 	function getRandomPokemon(){
 
 		randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
-		// Path for corresponding image for random Pokemon
-		pokemonPath = pokemonArray[randomPokemon]['path'];
-		// Displays image of random Pokemon
-		document.getElementById( 'pokemonimage' ).setAttribute( 'src',pokemonPath );
+
+		if ( alreadyChosenPokemon.indexOf( randomPokemon ) === -1 ) {
+			// Makes sure that previously shown Pokemon doesn't get shown again
+			alreadyChosenPokemon.push(randomPokemon);
+			// Path for corresponding image for random Pokemon
+			pokemonPath = pokemonArray[randomPokemon]['path'];
+			// Displays image of random Pokemon
+			document.getElementById( 'pokemonimage' ).setAttribute( 'src',pokemonPath );
+
+		} else {
+			// Runs function again if Pokemon has already been shown
+			getRandomPokemon();
+		}
+
+
 	}
 
 });
