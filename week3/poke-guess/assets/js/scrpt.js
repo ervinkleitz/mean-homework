@@ -66,9 +66,9 @@ $(document).ready(function(){
 					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 					//Plays wrong sound
 					document.getElementById( 'wrong' ).play(); 
+					// Increments number of losses if player does not guess the right Pokemon before time runs out
 					losses++;
 					clearInterval( timer );
-					console.log(isRight);
 					repeatCountdown();
 					// Makes a Tepig visible for each loss
 					switch ( losses ) {
@@ -106,10 +106,7 @@ $(document).ready(function(){
 				document.getElementById( 'correct' ).play();
 				score++;
 				isRight = true;
-				console.log( 'score: ' + score );
-				console.log( 'isRight: ' + isRight );
-
-
+				// Used different pokeballs (greatball, ultraball, etc.)
 				switch( score ) {
 					case 1: document.getElementById( 'pokeball1' ).src = 'assets/img/new_pokeball.png'; break;
 					case 2: document.getElementById( 'pokeball2' ).src = 'assets/img/premier_ball.png'; break;

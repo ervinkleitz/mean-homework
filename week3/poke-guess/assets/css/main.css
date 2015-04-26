@@ -8,7 +8,7 @@
  */
 
 body {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -123,6 +123,8 @@ i {
 /* HeaderWrap */
 #headerwrap {
 	/* background: url(../img/bg01.jpg) no-repeat center top; */
+    background-image: url("../img/pokemon_background.jpg");
+    background-size: cover;
 	background-color: #3498db;
 	margin-top: -20px;
 	padding-top:200px;
