@@ -26,41 +26,20 @@ $(document).ready(function(){
 	// Array for all Pokemon
 	var pokemonArray 
 		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
-	
-	// Function to pick a random Pokemon
-	var randomPokemon;
-	var pokemonPath;
-	
-	function getRandomPokemon(){
 
-		randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
-		// Path for corresponding image for random Pokemon
-		pokemonPath = pokemonArray[randomPokemon]['path'];
-		// Displays image of random Pokemon
-		document.getElementById('pokemonimage').setAttribute('src',pokemonPath);
-	}
+	var randomPokemon, pokemonPath;
+	var score = 0;
+	var isRight = true;
 
 	// Picks a random Pokemon
 	getRandomPokemon();
-
-	// Accepts user input and plays sound if it matches random Pokemon name within 10 seconds
-	// var userPokemonToCheck = '';
-	var didUserClick = false;
-
-	function checkPokemon() {
-		var userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
-
-			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] ) {
-				document.getElementById('correct').play();
-			} else { document.getElementById('wrong').play(); }
-		didUserClick = true;
-	};
 
 	document.getElementById( 'sendPokemon' ).addEventListener('click', checkPokemon);
 
 	// Countdown timer
 	var losses = 0;
 	mainTimer();
+
 	function mainTimer() {
 		var counter = 9;
 		var timer = setInterval( countDown, 1000 );
@@ -70,22 +49,20 @@ $(document).ready(function(){
 			if ( counter > 0 && losses < 3 ) {
 				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
 				counter --;
-
-			} else if (counter <= 0 && losses < 3 ) {
+				// If player is unsuccessful or time runs out
+			} else if ( counter <= 0 && losses < 3 ) {
 				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
-				// clearInterval( timer );
-				document.getElementById('wrong').play();
+				//Plays wrong sound
+				document.getElementById( 'wrong' ).play(); 
 				losses++;
-				clearInterval(timer);
-				mainTimer();
-				getRandomPokemon();
-				document.getElementById( 'sendPokemon' ).addEventListener('click', checkPokemon);
-				document.getElementById( 'inputPokemon' ).value = '';
+				clearInterval( timer );
+
+				repeatCountdown();
 
 				switch ( losses ) {
-					case 1: document.getElementById('tepig1').style.visibility = 'visible'; break;
-					case 2: document.getElementById('tepig2').style.visibility = 'visible'; break;
-					case 3: document.getElementById('tepig3').style.visibility = 'visible'; break;
+					case 1: document.getElementById( 'tepig1' ).style.visibility = 'visible'; break;
+					case 2: document.getElementById( 'tepig2' ).style.visibility = 'visible'; break;
+					case 3: document.getElementById( 'tepig3' ).style.visibility = 'visible'; break;
 
 					default: break;
 				}
@@ -94,10 +71,42 @@ $(document).ready(function(){
 				return;
 			}
 
-			// return;
 		}
 
 		return;
+	}
+
+	// Counts down again after first countdown
+	function repeatCountdown(){
+		mainTimer(); 
+		getRandomPokemon();
+		document.getElementById( 'sendPokemon' ).addEventListener('click', checkPokemon);
+		document.getElementById( 'inputPokemon' ).value = '';
+	}
+	// Checks if Pokemon entered was right/wrong
+	var didUserClick = false;
+	function checkPokemon() {
+		var userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
+
+			if ( userPokemonToCheck === pokemonArray[randomPokemon]['name'] ) {
+				document.getElementById( 'correct' ).play();
+				score++;
+				isRight = true;
+				counter = 0;
+				console.log(score);
+			} else { 
+				document.getElementById( 'wrong' ).play(); 
+			}
+		didUserClick = true;
+	}
+	// Picks random Pokemon
+	function getRandomPokemon(){
+
+		randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
+		// Path for corresponding image for random Pokemon
+		pokemonPath = pokemonArray[randomPokemon]['path'];
+		// Displays image of random Pokemon
+		document.getElementById( 'pokemonimage' ).setAttribute( 'src',pokemonPath );
 	}
 
 });
