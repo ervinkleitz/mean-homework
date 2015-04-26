@@ -27,56 +27,66 @@ $(document).ready(function(){
 	var pokemonArray 
 		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
 
-	var randomPokemon, pokemonPath;
+	var randomPokemon, pokemonPath
+	var isRight = false;
 	var score = 0;
+	var didUserClick = false;
 
 	// Picks a random Pokemon
 	getRandomPokemon();
 
-	document.getElementById( 'sendPokemon' ).addEventListener('click', checkPokemon);
+	document.getElementById( 'sendPokemon' ).addEventListener( 'click', checkPokemon );
 
 	// Countdown timer
 	var losses = 0;
 	mainTimer();
 
 	function mainTimer() {
-		var isRight = false;
 		var counter = 9;
 		var timer = setInterval( countDown, 1000 );
 
 		function countDown(){
 
-			if ( score === 3 ) { document.getElementById( 'win' ).play(); clearInterval( timer ); return; }
+			console.log( 'isRight test: ' + isRight );
 
-			if ( counter > 0 && losses < 3 && isRight === false ) {
-				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
-				counter --;
-				// If player is unsuccessful or time runs out
-			} else if ( counter <= 0 && losses < 3 && isRight === false ) {
-				document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
-				//Plays wrong sound
-				document.getElementById( 'wrong' ).play(); 
-				losses++;
-				clearInterval( timer );
+			if ( score === 3 && losses < 3 ) { 
+				document.getElementById( 'win' ).play(); 
+				clearInterval( timer ); 
+				return; }
 
-				repeatCountdown();
+			if ( isRight === false ) {
 
-				switch ( losses ) {
-					case 1: document.getElementById( 'tepig1' ).style.visibility = 'visible'; break;
-					case 2: document.getElementById( 'tepig2' ).style.visibility = 'visible'; break;
-					case 3: document.getElementById( 'tepig3' ).style.visibility = 'visible'; break;
+				if ( counter > 0 && losses < 3) {
+					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
+					counter --;
+					// If player is unsuccessful or time runs out
+				} else if ( counter === 0 && losses < 3 ) {
+					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
+					//Plays wrong sound
+					document.getElementById( 'wrong' ).play(); 
+					losses++;
+					clearInterval( timer );
+					console.log(isRight);
+					repeatCountdown();
 
-					default: break;
-				}
+					switch ( losses ) {
+						case 1: document.getElementById( 'tepig1' ).style.visibility = 'visible'; break;
+						case 2: document.getElementById( 'tepig2' ).style.visibility = 'visible'; break;
+						case 3: document.getElementById( 'tepig3' ).style.visibility = 'visible'; break;
 
-			} else if ( counter > 0 && losses < 3 && isRight === true ) {
-				console.log( 'true' );
-				clearInterval( timer );
-				console.log( score );
-				
+						default: break;
+					}
+
+				} else { return; }
+
 			} else {
-				return;
+				clearInterval( timer );
+				repeatCountdown();
+				isRight = false;
+
 			}
+
+
 
 		}
 
@@ -91,7 +101,7 @@ $(document).ready(function(){
 		document.getElementById( 'inputPokemon' ).value = '';
 	}
 	// Checks if Pokemon entered was right/wrong
-	var didUserClick = false;
+
 	function checkPokemon() {
 		var userPokemonToCheck = document.getElementById('inputPokemon').value.toLowerCase();
 
@@ -99,7 +109,22 @@ $(document).ready(function(){
 				document.getElementById( 'correct' ).play();
 				score++;
 				isRight = true;
-				console.log(score);
+				console.log( 'score: ' + score );
+				console.log( 'isRight: ' + isRight );
+
+
+				switch( score ) {
+					case 1: document.getElementById( 'pokeball1' ).src = 'assets/img/pokeball.png'; break;
+					case 2: document.getElementById( 'pokeball2' ).src = 'assets/img/pokeball.png'; break;
+					case 3: document.getElementById( 'pokeball3' ).src = 'assets/img/pokeball.png'; break;
+					case 4: document.getElementById( 'pokeball4' ).src = 'assets/img/pokeball.png'; break;
+					case 5: document.getElementById( 'pokeball5' ).src = 'assets/img/pokeball.png'; break;
+					default: break;
+
+				repeatCountdown();
+
+				}
+
 			} else { 
 				document.getElementById( 'wrong' ).play(); 
 			}
