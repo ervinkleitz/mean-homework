@@ -127,10 +127,10 @@ i {
     background-size: cover;
 	background-color: #3498db;
 	margin-top: -20px;
-	padding-top:200px;
+	padding-top:150px;
 	background-attachment: relative;
-	background-position: center center;
-	min-height: 650px;
+	background-position: center ;
+	min-height: 40em;
 	width: 100%;
 	
     -webkit-background-size: 100%;
@@ -151,4 +151,32 @@ i {
 	font-size: 45px;
 	font-weight: 300;
 	letter-spacing: 1px;
+}
+
+.title_landing, .start, .pokeballs {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.title_landing {
+    
+}
+
+.pokeballs img {
+    height: 50px;
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.instructions {
+    display: block;
+/*    border: 1px solid rgb(52,152,219);*/
+    border-radius: 10px;
+    width: 25em;
+    height: 5em;
+    text-align: center;
+    padding-top: 0.5em;
+    background-color: rgba(52,152,219,0.5);
+    color: white;
+    margin: 0 auto;
 }
