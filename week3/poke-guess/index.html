@@ -36,11 +36,6 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="landing.html"><b>Poke Guess</b></a>
         </div>
         <div class="navbar-collapse collapse">
@@ -51,68 +46,47 @@
     </div>
 
 	<div id="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<img src="assets/img/title.png">
-					<!-- <h1 class="title">Who's that Pokemon?</h1> -->
-					<form class="form-inline" role="">
-					  <div class="form-group">
-					    <input type="text" class="form-control" id="inputPokemon" placeholder="Enter pokemon name">
-					  </div>
-					  <button type="button" class="btn btn-warning btn-lg" id="sendPokemon">Submit</button>
-					</form>					
-				</div><!-- /col-lg-6 -->
-
-
-				<div class="col-lg-6">
-					<img id="pokemonimage" class="img-responsive"  src="" alt="">
-				</div><!-- /col-lg-6 -->
-
-
-				<div class="col-sm-1">
+		<!-- Displays Timer -->
+		<h1 id="timerdisplay">Time Remaining: 0:10</h1>
+		<!-- Shows scores -->
+		<div class="scores">
+			<!-- Shows different Pokeballs for every correct guess -->
+			<div class="win_score">
+				<h1>Correct</h1>
+				<div class = "pokeballs">
 					<img id="pokeball1" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-				</div>
-				<div class="col-sm-1">
 					<img id="pokeball2" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-				</div>
-				<div class="col-sm-1">
 					<img id="pokeball3" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-				</div>
-				<div class="col-sm-1">
 					<img id="pokeball4" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-				</div>
-				<div class="col-sm-1">
 					<img id="pokeball5" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
 				</div>
-
-
-			</div><!-- /row -->
-		</div><!-- /container -->
-	</div><!-- /headerwrap -->
-	
-	
-	<div class="container">
-		<div class="lives">
-			<div class="row">
-				<div class="col-lg-4">
+			</div>
+			<!-- Shows Koffing for every wrong guess -->
+			<div class="lose_score">
+				<h1>Wrong</h1>
+				<div class="tepigs">
 					<img id="tepig1" class="img-responsive" src="assets/img/sad.png" alt="">
-				</div>
-				<div class="col-lg-4">
 					<img id="tepig2" class="img-responsive" src="assets/img/sad.png" alt="">
-				</div>
-				<div class="col-lg-4">
 					<img id="tepig3" class="img-responsive" src="assets/img/sad.png" alt="">
 				</div>
 			</div>
 		</div>
-		<div class="row mt centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<h1 id="timerdisplay">Time Remaining:<br/>0:10</h1>
-				<h3>Enter the Pokemon's name and press submit before the time runs out!</h3>
-			</div>
-		</div><!-- /row -->
-		
+		<!-- Title Heading -->
+		<div class="title_landing">
+			<img src="assets/img/title.png">
+		</div>
+		<!-- Displays random Pokemon -->
+		<div class="pokemon_image_area">
+			<img id="pokemonimage" class=""  src="" alt="">
+		</div>
+		<!-- Input form -->
+		<form class="input_form" role="">
+		 	<input type="text" class="input form-control" id="inputPokemon" placeholder="Enter pokemon name">
+		 	<button type="button" class="btn btn-warning btn-lg" id="sendPokemon">Submit</button>
+		</form>					
+
+	</div><!-- /headerwrap -->
+	
 	<audio id="correct" src="assets/audio/correct_guess.wav"></audio>
 	<audio id="wrong" src="assets/audio/incorrect_guess.wav"></audio>
 	<audio id="gameOver" src="assets/audio/game_over.wav"></audio>

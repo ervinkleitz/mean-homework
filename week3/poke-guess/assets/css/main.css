@@ -145,23 +145,14 @@ i {
     background-size: cover;
 }
 
-/*#headerwrap h1 {
-	margin-top: 60px;
-	margin-bottom: 15px;
-	color: white;
-	font-size: 45px;
-	font-weight: 300;
-	letter-spacing: 1px;
-}*/
-
-.title_landing, .start, .pokeballs, .tepigs, .pokemon_image_area,
+.title_landing, .start, .pokemon_image_area,
 .input_form {
     text-align: center;
     padding-bottom: 15px;
 }
 
 .pokeballs img {
-    height: 50px;
+    height: 30px;
     display: inline-block;
     padding-right: 10px;
 }
@@ -179,8 +170,9 @@ i {
 }
 
 .tepigs img {
-    height: 50px;
+    height: 30px;
     display: inline-block;
+    padding-right: 10px;
 }
 
 .pokemon_image_area img {
@@ -191,4 +183,19 @@ i {
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.scores {
+    display: inline-block;
+    width: 100%
+}
+
+.win_score {
+    margin-left: 1em;
+    float: left;
+}
+
+.lose_score {
+    margin-right: 1em;
+    float: right;
 }
