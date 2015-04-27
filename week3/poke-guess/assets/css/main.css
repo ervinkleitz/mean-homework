@@ -136,7 +136,7 @@ i {
 	background-color: #3498db;
 
 	background-position: center ;
-	min-height: 50rem;
+	min-height: 60rem;
 	width: 100%;
 }
 
@@ -179,6 +179,7 @@ i {
     height: 5em;
     text-align: center;
     padding-top: 0.5em;
+    margin-top: 300px;
     background-color: rgba(52,152,219,0.5);
     color: black;
     margin: 0 auto;
