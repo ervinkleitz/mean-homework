@@ -60,11 +60,11 @@ $(document).ready(function(){
 			if ( isRight === false ) {
 
 				if ( counter > 0 && losses < 3) {
-					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
+					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining: 0:0' + counter;
 					counter --;
 					// If player is unsuccessful or time runs out
 				} else if ( counter === 0 && losses < 3 ) {
-					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining:<br>0:0' + counter;
+					document.getElementById( 'timerdisplay' ).innerHTML = 'Time Remaining: 0:0' + counter;
 					//Plays wrong sound
 					document.getElementById( 'wrong' ).play(); 
 					// Increments number of losses if player does not guess the right Pokemon before time runs out

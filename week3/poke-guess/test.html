@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--     <link rel="shortcut icon" href="assets/img/favicon.png"> -->
+   	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+   	<script type="text/javascript" src="assets/js/scrpt.js"></script>
+ 
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <title>Poke Guess</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Fonts from Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="landing.html"><b>Poke Guess</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div id="header">
+
+			<h1 id="timerdisplay">Time Remaining: 0:10</h1>
+
+				<img src="assets/img/title.png">
+
+		<div class="pokemon_image_area">
+			<img id="pokemonimage" class=""  src="" alt="">
+		</div>
+
+	
+
+
+
+			<form class="form-inline" role="">
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="inputPokemon" placeholder="Enter pokemon name">
+			  </div>
+			  <button type="button" class="btn btn-warning btn-lg" id="sendPokemon">Submit</button>
+			</form>					
+
+
+
+		<div class = "pokeballs">
+			<img id="pokeball1" class="img-responsive" src="assets/img/new_pokeball.png" alt="">
+			<img id="pokeball2" class="img-responsive" src="assets/img/premier_ball.png" alt="">
+			<img id="pokeball3" class="img-responsive" src="assets/img/greatball.png" alt="">
+			<img id="pokeball4" class="img-responsive" src="assets/img/ultraball.png" alt="">
+			<img id="pokeball5" class="img-responsive" src="assets/img/masterball.png" alt="">
+		</div>
+
+		<div class="tepigs">
+			<img id="tepig1" class="img-responsive" src="assets/img/sad.png" alt="">
+			<img id="tepig2" class="img-responsive" src="assets/img/sad.png" alt="">
+			<img id="tepig3" class="img-responsive" src="assets/img/sad.png" alt="">
+		</div>
+
+	</div><!-- /headerwrap -->
+	
+	<audio id="correct" src="assets/audio/correct_guess.wav"></audio>
+	<audio id="wrong" src="assets/audio/incorrect_guess.wav"></audio>
+	<audio id="gameOver" src="assets/audio/game_over.wav"></audio>
+	<audio id="win" src="assets/audio/win_music.wav"></audio>
+
+  </body>
+</html>
