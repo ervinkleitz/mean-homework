@@ -58,11 +58,11 @@ $(document).ready(function(){
 			if ( score === 5 && losses < 3 ) { 
 				document.getElementById( 'win' ).play(); 
 				clearInterval( timer ); 
-				alert( 'You have won!' )
+				myModalWin();
 				return; 
 			}
-			// Checks if player has had 3 wrong guesses, if so plays gameOver audio
-			if ( losses === 3 ) { document.getElementById( 'gameOver' ).play(); clearInterval( timer ); return; }
+			// Checks if player has had 3 wrong guesses, if so plays gameOver audio and Lose Modal
+			if ( losses === 3 ) { document.getElementById( 'gameOver' ).play(); clearInterval( timer ); myModalLose(); return; }
 			// If player has entered a wrong guess
 			if ( isRight === false ) {
 
@@ -151,6 +151,14 @@ $(document).ready(function(){
 		}
 
 
+	}
+
+	function myModalWin() {
+		document.getElementById( 'myDialogWin' ).showModal();
+	}
+
+	function myModalLose() {
+		document.getElementById( 'myDialogLose' ).showModal();
 	}
 
 });

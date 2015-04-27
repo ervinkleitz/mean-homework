@@ -89,6 +89,10 @@ a:after {
     padding: 0;
 }
 
+footer {
+    text-align: center;
+}
+
 .navbar-default {
 	background-color: #3498db;
 	border-color: transparent;
@@ -207,6 +211,14 @@ i {
     float: right;
 }
 
-footer {
+#myDialogWin, #myDialogLose {
+    margin: auto auto;
+    width: 25em;
+    height: 5em;
+    background-color: rgb(52,152,219);
+    border: 5px solid white;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', sans-serif; 
+    color: white;   
     text-align: center;
 }

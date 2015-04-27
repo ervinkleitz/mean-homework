@@ -20,6 +20,7 @@
 
     <!-- Fonts from Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P:300,400,500' rel='stylesheet' type='text/css'>
 
   </head>
 
@@ -30,7 +31,9 @@
           <a class="navbar-brand" href="landing.html"><b>Poke Guess</b></a>
         </div>
     </div>
-
+    <!-- Modal for Win -->
+	<dialog id="myDialogWin">Congratulations!<br>You won!!!</dialog>
+	<dialog id="myDialogLose">Sorry...<br>You lose :(</dialog>
 	<div id="index_header">
 		<!-- Displays Timer -->
 		<h1 id="timerdisplay">Time Remaining: 0:10</h1>
@@ -49,7 +52,7 @@
 			</div>
 			<!-- Shows Koffing for every wrong guess -->
 			<div class="lose_score">
-				<h1>Wrong</h1>
+				<h1>Time up(s)</h1>
 				<div class="tepigs">
 					<img id="tepig1" class="img-responsive" src="assets/img/loss.png" alt="">
 					<img id="tepig2" class="img-responsive" src="assets/img/loss.png" alt="">
@@ -66,7 +69,7 @@
 			<img id="pokemonimage" class=""  src="" alt="">
 		</div>
 		<!-- Input form -->
-		<form class="input_form" role="">
+		<form class="input_form" role="" onsubmit="return false">
 		 	<input type="text" class="input form-control" id="inputPokemon" placeholder="Enter pokemon name">
 		 	<button type="button" class="btn btn-warning btn-lg" id="sendPokemon">Submit</button>
 		</form>					
@@ -74,7 +77,7 @@
 	</div><!-- /headerwrap -->
 
 	<footer>
-    	<span>A Coding Campus Javascript exercise by Ervin Kleitz Gonzales</span>
+    	<span>A Javascript exercise by Ervin Kleitz Gonzales</span>
   	</footer>
 	
 	<audio id="correct" src="assets/audio/correct_guess.wav"></audio>
