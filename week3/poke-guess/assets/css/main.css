@@ -154,7 +154,8 @@ i {
 	letter-spacing: 1px;
 }*/
 
-.title_landing, .start, .pokeballs, .tepigs, .pokemon_image_area {
+.title_landing, .start, .pokeballs, .tepigs, .pokemon_image_area,
+.input_form {
     text-align: center;
     padding-bottom: 15px;
 }
@@ -173,7 +174,7 @@ i {
     text-align: center;
     padding-top: 0.5em;
     background-color: rgba(52,152,219,0.5);
-    color: white;
+    color: black;
     margin: 0 auto;
 }
 
@@ -184,4 +185,10 @@ i {
 
 .pokemon_image_area img {
     display: inline-block;
+}
+
+.input {
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
