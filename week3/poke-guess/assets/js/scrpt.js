@@ -8,24 +8,31 @@ $(document).ready(function(){
 	var Pokemon = function( name, path ){
 		this.name = name;
 		this.path = path;
-	}
-	// Pokemon list
-	var bulbasaur = new Pokemon( 'bulbasaur','assets/img/001.png' );
-	var ivysaur = new Pokemon( 'ivysaur','assets/img/002.png' );
-	var venusaur = new Pokemon( 'venusaur','assets/img/003.png' );
-	var charmander = new Pokemon( 'charmander','assets/img/004.png' );
-	var charmeleon = new Pokemon( 'charmeleon','assets/img/005.png' );
-	var charizard = new Pokemon( 'charizard','assets/img/006.png' );
-	var squirtle = new Pokemon( 'squirtle','assets/img/007.png' );
-	var wartortle = new Pokemon( 'wartortle','assets/img/008.png' );
-	var blastoise = new Pokemon( 'blastoise','assets/img/009.png' );
-	var caterpie = new Pokemon( 'caterpie','assets/img/010.png' );
-	var metapod = new Pokemon( 'metapod','assets/img/011.png' );
-	var butterfree = new Pokemon( 'butterfree','assets/img/012.png' );
-
+	};
+	// Pokemon list, names shortened for array
+	var p1 = new Pokemon( 'bulbasaur','assets/img/001.png' );
+	var p2 = new Pokemon( 'ivysaur','assets/img/002.png' );
+	var p3 = new Pokemon( 'venusaur','assets/img/003.png' );
+	var p4 = new Pokemon( 'charmander','assets/img/004.png' );
+	var p5 = new Pokemon( 'charmeleon','assets/img/005.png' );
+	var p6 = new Pokemon( 'charizard','assets/img/006.png' );
+	var p7 = new Pokemon( 'squirtle','assets/img/007.png' );
+	var p8 = new Pokemon( 'wartortle','assets/img/008.png' );
+	var p9 = new Pokemon( 'blastoise','assets/img/009.png' );
+	var p10 = new Pokemon( 'caterpie','assets/img/010.png' );
+	var p11 = new Pokemon( 'metapod','assets/img/011.png' );
+	var p12 = new Pokemon( 'butterfree','assets/img/012.png' );
+	var p13 = new Pokemon( 'weedle','assets/img/013.png' );
+	var p14 = new Pokemon( 'kakuna','assets/img/014.png' );
+	var p15 = new Pokemon( 'beedrill','assets/img/015.png' );
+	var p16 = new Pokemon( 'pidgey','assets/img/016.png' );
+	var p17 = new Pokemon( 'pidgeotto','assets/img/017.png' );
+	var p18 = new Pokemon( 'pidgeot','assets/img/018.png' );
+	var p19 = new Pokemon( 'rattata','assets/img/019.png' );
+	var p20 = new Pokemon( 'raticate','assets/img/020.png' );
 	// Array for all Pokemon
 	var pokemonArray 
-		= [bulbasaur,ivysaur,venusaur,charmander,charmeleon,charizard,squirtle,wartortle,blastoise,caterpie,metapod,butterfree];
+		= [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20];
 
 	var randomPokemon, pokemonPath;
 	var isRight = false;
@@ -128,13 +135,13 @@ $(document).ready(function(){
 	// Picks random Pokemon that hasn't already been shown
 	function getRandomPokemon(){
 
-		randomPokemon = parseInt( Math.floor( Math.random() * 12 ) );
+		randomPokemon = parseInt( Math.floor( Math.random() * 20 ) );
 
 		if ( alreadyChosenPokemon.indexOf( randomPokemon ) === -1 ) {
 			// Makes sure that previously shown Pokemon doesn't get shown again
-			alreadyChosenPokemon.push(randomPokemon);
+			alreadyChosenPokemon.push( randomPokemon );
 			// Path for corresponding image for random Pokemon
-			pokemonPath = pokemonArray[randomPokemon]['path'];
+			pokemonPath = pokemonArray[ randomPokemon ][ 'path' ];
 			// Displays image of random Pokemon
 			document.getElementById( 'pokemonimage' ).setAttribute( 'src',pokemonPath );
 

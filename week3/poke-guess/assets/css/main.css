@@ -120,38 +120,49 @@ i {
 	color: #3498db; 
 }
 
-.lives { margin: auto; max-width: 300px; padding-top:20px;}
+#timerdisplay {
+    padding-left: 0.5em;
+    font-weight: bold;
+}
+
 /* HeaderWrap */
-#header {
-	/* background: url(../img/bg01.jpg) no-repeat center top; */
+#header, #index_header {
     background-image: url("../img/pokemon_background.jpg");
     background-size: cover;
 	background-color: #3498db;
-	margin-top: -20px;
-	padding-top:100px;
-	background-attachment: relative;
-	background-position: center ;
-	min-height: 40em;
-	width: 100%;
-	
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	background-position: center ;
+	min-height: 50rem;
+	width: 100%;
 }
 
-.title_landing, .start, .pokemon_image_area,
+#header {
+    padding-top: 120px;
+}
+
+#index_header {
+    padding-top: 40px;
+}
+
+.title_landing, .start, .pokemon_image_area, .pokeballs_landing,
 .input_form {
     text-align: center;
     padding-bottom: 15px;
 }
 
+.pokeballs_landing img {
+    height: 50px;
+    display: inline-block;
+    padding-right: 10px;
+}
+
 .pokeballs img {
+    height: 30px;
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.tepigs img {
     height: 30px;
     display: inline-block;
     padding-right: 10px;
@@ -169,12 +180,6 @@ i {
     margin: 0 auto;
 }
 
-.tepigs img {
-    height: 30px;
-    display: inline-block;
-    padding-right: 10px;
-}
-
 .pokemon_image_area img {
     display: inline-block;
 }
@@ -187,15 +192,21 @@ i {
 
 .scores {
     display: inline-block;
-    width: 100%
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .win_score {
-    margin-left: 1em;
+    padding-left: 1em;
     float: left;
 }
 
 .lose_score {
-    margin-right: 1em;
+    padding-right: 1em;
     float: right;
+}
+
+footer {
+    text-align: center;
 }

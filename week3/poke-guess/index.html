@@ -9,9 +9,7 @@
 <!--     <link rel="shortcut icon" href="assets/img/favicon.png"> -->
    	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
    	<script type="text/javascript" src="assets/js/scrpt.js"></script>
- 
     <script src="assets/js/bootstrap.min.js"></script>
-
     <title>Poke Guess</title>
 
     <!-- Bootstrap core CSS -->
@@ -22,30 +20,18 @@
 
     <!-- Fonts from Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
-    
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+
   </head>
 
   <body>
-
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="landing.html"><b>Poke Guess</b></a>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
     </div>
 
-	<div id="header">
+	<div id="index_header">
 		<!-- Displays Timer -->
 		<h1 id="timerdisplay">Time Remaining: 0:10</h1>
 		<!-- Shows scores -->
@@ -65,9 +51,9 @@
 			<div class="lose_score">
 				<h1>Wrong</h1>
 				<div class="tepigs">
-					<img id="tepig1" class="img-responsive" src="assets/img/sad.png" alt="">
-					<img id="tepig2" class="img-responsive" src="assets/img/sad.png" alt="">
-					<img id="tepig3" class="img-responsive" src="assets/img/sad.png" alt="">
+					<img id="tepig1" class="img-responsive" src="assets/img/loss.png" alt="">
+					<img id="tepig2" class="img-responsive" src="assets/img/loss.png" alt="">
+					<img id="tepig3" class="img-responsive" src="assets/img/loss.png" alt="">
 				</div>
 			</div>
 		</div>
@@ -86,6 +72,10 @@
 		</form>					
 
 	</div><!-- /headerwrap -->
+
+	<footer>
+    	<span>A Coding Campus Javascript exercise by Ervin Kleitz Gonzales</span>
+  	</footer>
 	
 	<audio id="correct" src="assets/audio/correct_guess.wav"></audio>
 	<audio id="wrong" src="assets/audio/incorrect_guess.wav"></audio>
