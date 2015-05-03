@@ -7,12 +7,23 @@ $(document).ready( function(){
     .fail(function(){
           console.log('GET Failed');
     });
-    
+    //***** Declarations *****//
     var brand, name, length, style, price, bottomImgUrl, topImgUrl, mainItemList;
+	var tracker = 0;
+	var formList = document.getElementById('form').innerHTML;
 	
-	document.getElementById( 'edit' ).addEventListener('click', editItems);
+	document.getElementById( 'addItem' ).style.visibility = 'hidden';
+	document.getElementById( 'form' ).style.visibility = 'hidden';
 	
-    // ***** Displays the saved longboards for sale *****//
+	//***** Event listeners *****//
+	document.getElementById( 'edit' ).addEventListener( 'click', editItems );
+	document.getElementById( 'addItem' ).addEventListener( 'click', addForm );
+	
+	/////////////////////////
+	//***** Functions *****//
+	/////////////////////////
+	
+    //***** Displays the saved longboards for sale *****//
     function getLongboardsData( data ){
         var masterList = data;
 		console.log(masterList);
@@ -40,7 +51,17 @@ $(document).ready( function(){
 	
 	//Displays the edit page
 	function editItems(){
-		
+		document.getElementById( 'addItem' ).style.visibility = 'visible';
+		document.getElementById( 'items' ).style.display = 'none';
+		document.getElementById( 'form' ).style.visibility = 'visible';
 	}
+	
+	function addForm(){
+		formList += formList;
+		console.log(formList);
+		document.getElementById( 'form' ).innerHTML = formList;
+	}
+
+
     
 });
