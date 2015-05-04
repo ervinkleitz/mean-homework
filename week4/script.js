@@ -1,17 +1,13 @@
 $(document).ready( function(){
     
-    $.ajax('http://mean.codingcamp.us:8888/codingcampus/longboards',{
-        method: 'GET'
-    })
-    .done( getLongboardsData )
-    .fail(function(){
-          console.log('GET Failed');
-    });
-    //***** Declarations *****//
+	getData();
+	
+    //***** Global var declarations *****//
     var brand, name, length, style, price, bottomImgUrl, topImgUrl, mainItemList;
-	var tracker = 0;
+	var formCounter = 0;
 	var formList = document.getElementById('form').innerHTML;
 	
+	//Hides the ' + ' button and the Table
 	document.getElementById( 'addItem' ).style.visibility = 'hidden';
 	document.getElementById( 'form' ).style.visibility = 'hidden';
 	
@@ -23,6 +19,18 @@ $(document).ready( function(){
 	/////////////////////////
 	//***** Functions *****//
 	/////////////////////////
+	
+	//***** Function to retrieve data from the server
+	function getData(){
+	
+		$.ajax('http://mean.codingcamp.us:8888/ervinkleitz/longboards',{
+		method: 'GET'
+		})
+		.done( getLongboardsData )
+		.fail(function(){
+		  console.log('GET Failed');
+		});
+	}//End of getData
 	
     //***** Displays the saved longboards for sale *****//
     function getLongboardsData( data ){
@@ -37,6 +45,7 @@ $(document).ready( function(){
 			price = parseInt(masterList[ index ]['price']);
 			bottomImgUrl = masterList[ index ]['bottom_img_url'];
 			topImgUrl = masterList[ index ]['top_img_url'];
+			
 			var itemList = '<!-- start item --><div class="item"><div class="item-image"><img class="bottom" src="';
 			itemList += bottomImgUrl + '"><img class="top" src="' + topImgUrl + '"></div><div class="name">';
 			itemList += '</div><div class="name">' + brand + ' ' + length + '" ' + name + '<br>' + style + '</div><div class="price">';
@@ -46,19 +55,25 @@ $(document).ready( function(){
 		}
 		
 		document.getElementById( 'items' ).innerHTML = mainItemList;
+		return mainItemList;
     }//End of getLongboardsData
 	
 	//***** Displays the edit page *****//
 	function editItems(){
 		document.getElementById( 'addItem' ).style.visibility = 'visible';
 		document.getElementById( 'items' ).style.display = 'none';
-		document.getElementById( 'form' ).style.visibility = 'visible';
+		
 	}//end of editItems
 	
-	//***** Displays another form *****//
+	//***** Displays one more form *****//
 	function addForm(){
-		formList += formList;
-		document.getElementById( 'form' ).innerHTML = formList;
+		document.getElementById( 'form' ).style.visibility = 'visible';
+		var tmpList = formList;
+		for ( var numberOfForms = 1; numberOfForms <= formCounter; numberOfForms++ ) {
+			document.getElementById( 'form' ).innerHTML = tmpList;
+			tmpList += formList;
+		}
+		formCounter++;
 	}//end of addForm
 
 	//***** Saves data (sends to server) *****//
@@ -84,14 +99,16 @@ $(document).ready( function(){
 		console.log(dataToPost);//For testing
 		
 		$.ajax({
-			type: 'POST',
-			url: "http://mean.codingcamp.us:8888/codingcampus/longboard",
+			method: 'POST',
+			url: 'http://mean.codingcamp.us:8888/ervinkleitz/longboard',
 			data: JSON.stringify(dataToPost), 
 			success: function(data) { alert('data: ' + dataToPost); },
-			contentType: "application/json",
+			contentType: 'application/x-www-form-urlencoded',
 			dataType: 'json'
 		});
 
 	}//End of save
+	
+
     
 });
