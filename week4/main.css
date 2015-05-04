@@ -179,3 +179,7 @@ h2 {
   background-color: #E5E2D3;
   border: 1px solid #5B5749;
 }
+
+#add-form {
+	visibility: hidden;
+}

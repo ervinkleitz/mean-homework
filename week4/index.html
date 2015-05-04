@@ -21,78 +21,23 @@
  
       <!-- boards section -->
       <div class="col-xs-8">
-        <div class="preview-edit" id="edit">
-          <button id="edit">edit</button>
-          <button id="preview">preview</button>
-		  <button id="addItem">+</button>
+        <div class="preview-edit">
+          <button id="edit-button">edit</button>
+          <button id="preview-button">preview</button>
+		  <button id="addItem-button">+</button>
         </div>
  
         <div class="items" id="items">
-			  <!-- start item -->
-			  <div class="item">
-				<div class="item-image">
-				  <img class="bottom" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7908/arbor_37_mission_walnut_complete_bottom__36436.1424734354.250.428.jpg?c=2">
-				  <img class="top" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7909/arbor_37_mission_walnut_complete_top__53285.1424734358.340.428.jpg?c=2">
-				</div>
-				<div class="name">
-				  Arbor 37" Mission Walnut
-				</div>
-				<div class="price">
-				  $190.00
-				</div>
-			  </div>
-			  <!-- end item -->
-			  <!-- start item -->
-			  <div class="item">
-				<div class="item-image">
-				  <img class="bottom" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7908/arbor_37_mission_walnut_complete_bottom__36436.1424734354.250.428.jpg?c=2">
-				  <img class="top" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7909/arbor_37_mission_walnut_complete_top__53285.1424734358.340.428.jpg?c=2">
-				</div>
-				<div class="name">
-				  Arbor 37" Mission Walnut
-				</div>
-				<div class="price">
-				  $190.00
-				</div>
-			  </div>
-			  <!-- end item -->
-			  <!-- start item -->
-			  <div class="item">
-				<div class="item-image">
-				  <img class="bottom" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7908/arbor_37_mission_walnut_complete_bottom__36436.1424734354.250.428.jpg?c=2">
-				  <img class="top" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7909/arbor_37_mission_walnut_complete_top__53285.1424734358.340.428.jpg?c=2">
-				</div>
-				<div class="name">
-				  Arbor 37" Mission Walnut
-				</div>
-				<div class="price">
-				  $190.00
-				</div>
-			  </div>
-			  <!-- end item -->
-			  <!-- start item -->
-			  <div class="item">
-				<div class="item-image">
-				  <img class="bottom" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7908/arbor_37_mission_walnut_complete_bottom__36436.1424734354.250.428.jpg?c=2">
-				  <img class="top" src="http://cdn6.bigcommerce.com/s-wug401/products/4229/images/7909/arbor_37_mission_walnut_complete_top__53285.1424734358.340.428.jpg?c=2">
-				</div>
-				<div class="name">
-				  Arbor 37" Mission Walnut
-				</div>
-				<div class="price">
-				  $190.00
-				</div>
-			  </div>
-			  <!-- end item -->
-		  </div>
+		<!-- Longboards for sale here -->
+		</div>
  
           <!-- start edit item -->
          <div class="container form-container">
-          <div class="item-edit" id="form">
+          <div class="item-edit row" id="form">
             <table class="col-md-3">
               <tr>
                 <td>Brand:</td>
-                <td class="text-right" id="test-id"><input type="text" id="brand-id" value="!"></td>
+                <td class="text-right" id="test-id"><input type="text" id="brand-id" value=""></td>
               </tr>
               <tr>
                 <td>Name:</td>
@@ -119,7 +64,7 @@
                 <td class="text-right"><input type="text" placeholder="(url)" id="top-url"></td>
               </tr>
               <tr>
-                <td><a class="delete" href="#">delete</a></td>
+                <td><a class="delete" href="#" id="delete-item">delete</a></td>
                 <td class="text-right"><button class="save" id="save">save</button></td>
               </tr>
             </table>
@@ -128,6 +73,38 @@
           
           <div class="container form-container">
           	<div class="item-edit" id="add-form">
+          	  <table class="col-md-3">
+              <tr>
+                <td>Brand:</td>
+                <td class="text-right"><input type="text" id="add-brand" value=""></td>
+              </tr>
+              <tr>
+                <td>Name:</td>
+                <td class="text-right"><input type="text" id="add-name" value=""></td>
+              </tr>
+              <tr>
+                <td>Length:</td>
+                <td class="text-right"><input type="number" id="add-length" value="">"</td>
+              </tr>
+              <tr>
+                <td>Style:</td>
+                <td class="text-right"><input type="text" id="add-style" value=""></td>
+              </tr>
+              <tr>
+                <td>Price:</td>
+                <td class="text-right">$<input type="number" id="add-price" value=""></td>
+              </tr>
+              <tr>
+                <td>Bottom Image:</td>
+                <td class="text-right"><input type="text" placeholder="(url)" id="add-bottom-url" value=""></td>
+              </tr>
+              <tr>
+                <td>Top Image:</td>
+                <td class="text-right"><input type="text" placeholder="(url)" id="add-top-url" value=""></td>
+              </tr>
+              <tr>
+                <td class="text-right"><button class="save" id="save-added">save</button></td>
+              </tr>
           	</div>
 		  </div>
         </div>
