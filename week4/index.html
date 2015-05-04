@@ -22,8 +22,9 @@
       <!-- boards section -->
       <div class="col-xs-8">
         <div class="preview-edit" id="edit">
-          <button>edit</button>
-          <button id="addItem">+</button>
+          <button id="edit">edit</button>
+          <button id="preview">preview</button>
+		  <button id="addItem">+</button>
         </div>
  
         <div class="items" id="items">
@@ -91,7 +92,7 @@
             <table class="col-md-3">
               <tr>
                 <td>Brand:</td>
-                <td class="text-right"><input type="text" id="brand-id"></td>
+                <td class="text-right" id="test-id"><input type="text" id="brand-id" value="!"></td>
               </tr>
               <tr>
                 <td>Name:</td>
@@ -124,6 +125,10 @@
             </table>
           </div>
           <!-- end edit item -->
+          
+          <div class="container form-container">
+          	<div class="item-edit" id="add-form"></div>
+		  </div>
         </div>
 		</div>
  
