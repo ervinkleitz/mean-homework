@@ -16,8 +16,6 @@ $(document).ready( function(){
 	//***** Event listeners *****//
 	document.getElementById( 'edit' ).addEventListener( 'click', editItems );
 	document.getElementById( 'addItem' ).addEventListener( 'click', addForm );
-	document.getElementById( 'save' ).addEventListener( 'click', save );
-//	document.getElementById( 'preview' ).addEventListener( 'click', seePreview );
 	
 	////////////////////////////////////////////////////////////
 	///////////////////***** Functions *****////////////////////
@@ -38,7 +36,7 @@ $(document).ready( function(){
     //***** Displays the saved longboards for sale *****//
     function getLongboardsData( data ){
         masterList = data;
-		
+		var itemList = '';
         for ( var index = 0; index < masterList.length; index++ ) {
 			brand = masterList[ index ]['brand'];
 			name = masterList[ index ]['name'];
@@ -48,7 +46,7 @@ $(document).ready( function(){
 			bottomImgUrl = masterList[ index ]['bottom_img_url'];
 			topImgUrl = masterList[ index ]['top_img_url'];
 			
-			var itemList = '<!-- start item --><div class="item"><div class="item-image"><img class="bottom" src="';
+			itemList = '<!-- start item --><div class="item"><div class="item-image"><img class="bottom" src="';
 			itemList += bottomImgUrl + '"><img class="top" src="' + topImgUrl + '"></div><div class="name">';
 			itemList += '</div><div class="name">' + brand + ' ' + length + '" ' + name + '<br>' + style + '</div><div class="price">';
 			itemList += '$' + price + '</div></div><!-- end item -->';
@@ -61,7 +59,6 @@ $(document).ready( function(){
 	
 	//***** Displays the edit page *****//
 	function editItems(){
-		
 		editList = '';
 		document.getElementById( 'form' ).style.visibility = 'visible';
 		document.getElementById( 'addItem' ).style.visibility = 'visible';
@@ -93,6 +90,10 @@ $(document).ready( function(){
 		}
 		
 		document.getElementById( 'form' ).innerHTML = editList;
+		//***** Event Listeners when editing *****//
+		document.getElementById( 'update' ).addEventListener( 'click', updateItem );
+		document.getElementById( 'preview' ).addEventListener( 'click', getData );
+//		document.getElementById( 'delete' ).addEventListener( 'click', deleteItem );
 		
 	}//end of editItems
 	
@@ -105,6 +106,7 @@ $(document).ready( function(){
 		}
 		document.getElementById( 'add-form' ).innerHTML = tmpList;
 		formCounter++;
+		document.getElementById( 'save' ).addEventListener( 'click', save );
 	}//end of addForm
 
 	//***** Saves data (sends to server) *****//
@@ -127,19 +129,49 @@ $(document).ready( function(){
 			top_img_url: getTopUrl
 		};
 		
-		console.log(dataToPost);//For testing
-		
 		$.ajax({
 			method: 'POST',
-			url: 'http://mean.codingcamp.us:8888/ervinkleitz/longboard',
+			url: 'http://mean.codingcamp.us:8888/ervinkleitz/longboard/',
 			data: JSON.stringify(dataToPost), 
-			success: function(data) { alert('data: ' + dataToPost); },
-			contentType: 'application/x-www-form-urlencoded',
-			dataType: 'json'
+			success: function(data) { alert( 'Item Saved!' ); console.log(JSON.stringify(dataToPost)); }
 		});
 
 	}//End of save
 	
-
+	//***** Function to update Longboard *****//
+	function updateItem(){
+		
+		var getBrand = document.getElementById( 'brand-id' ).value;
+		var getName = document.getElementById( 'name-id' ).value;
+		var getLength = document.getElementById( 'length-id' ).value;
+		var getStyle = document.getElementById( 'style-id' ).value;
+		var getPrice = document.getElementById( 'length-id' ).value; 
+		var getBottomUrl = document.getElementById( 'bottom-url' ).value;
+		var getTopUrl = document.getElementById( 'top-url' ).value;
+		var getId = document.getElementById( 'item-id' ).innerHTML;
+		
+		var dataToPut = {
+			brand: getBrand,
+			name: getName,
+			length: getLength,
+			style: getStyle,
+			price: getPrice,
+			bottom_img_url: getBottomUrl,
+			top_img_url: getTopUrl
+		};
+		
+		$.ajax({
+			method: 'PUT',
+			url: 'http://mean.codingcamp.us:8888/ervinkleitz/longboard/' + getId,
+			data: JSON.stringify(dataToPut), 
+			success: function(data) { alert( 'Item Updated!' ); console.log(JSON.stringify(dataToPut)); }
+//			,
+//			contentType: 'application/x-www-form-urlencoded',
+//			dataType: 'json'
+		});
+		
+	}
+	
+	//***** Function to delete Longboard record
     
 });
