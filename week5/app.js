@@ -4,7 +4,7 @@ var express = require( 'express' ),
 	app = express(),
 	bodyParser = require('body-parser'),
 	pokedex = [],
-	pokemonResponse = [],
+	pokemonResponse = {},
 	data, 
 	randomPokemon, 
 	chosenPokemon, 
@@ -37,7 +37,6 @@ function getRandom( req, res ){
 	randomPokemon = pokedex[ Math.floor( Math.random() * pokedex.length ) ];
 	//Gets Pokemon name
 	chosenPokemon = randomPokemon[ 'name' ];
-	console.log(req.body.alreadyShown);
 	//checks if pokemon has already been shown and calls getRandom if it has
 	for( var i = 0; i < req.body.alreadyShown.length; i++ ){
 		if ( req.body.alreadyShown[i] === chosenPokemon ) getRandom( req, res );
@@ -47,7 +46,10 @@ function getRandom( req, res ){
 	pokemonImgPath = 'http://pokeapi.co/media/img/' + pokemonUri.substring(15, pokemonUri.length-1) + '.png';
 	//adds pokemon to alredyShown array if it has not been shown
 	//Sends random pokemon and its image path to array to be sent to player
-	pokemonResponse.push('{name:' + chosenPokemon + ',' + 'path:' + pokemonImgPath + '}' );
+	pokemonResponse.name = chosenPokemon; 
+	pokemonResponse.path = pokemonImgPath;
+	console.log('Received data from /pokemon: ' + req.body.alreadyShown);
+	console.log('Sending data to client: ' + JSON.stringify(pokemonResponse));
 	res.send(JSON.stringify(pokemonResponse));
 }
 
