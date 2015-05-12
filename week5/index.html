@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="Full-Stack JavaScript project" content="">
+    <meta name="Ervin Kleitz Gonzales">
 <!--     <link rel="shortcut icon" href="assets/img/favicon.png"> -->
    	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
    	<script type="text/javascript" src="assets/js/scrpt.js"></script>
@@ -18,62 +18,72 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
 
-    <!-- Fonts from Google Fonts -->
+    <!-- fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P:300,400,500' rel='stylesheet' type='text/css'>
 
   </head>
 
   <body>
-  	
+
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
           <a class="navbar-brand" href="landing.html"><b>Poke Guess</b></a>
         </div>
     </div>
-    <!-- Modal for Win -->
+
+    <!-- modals -->
 	<dialog id="myDialogWin">Congratulations!<br>You won!!!</dialog>
 	<dialog id="myDialogLose">Sorry...<br>You lose :(</dialog>
+	<!-- modals -->
+
 	<div id="index_header">
-		<!-- Displays Timer -->
+
+		<!-- timer -->
 		<h1 id="timerdisplay">Time Remaining: 0:10</h1>
-		<!-- Shows scores -->
+
+		<!-- start of scores -->
 		<div class="scores">
-			<!-- Shows different Pokeballs for every correct guess -->
+
+			<!-- correct guess score board -->
 			<div class="win_score">
 				<h1>Correct</h1>
-				<div class = "pokeballs">
-					<img id="pokeball1" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-					<img id="pokeball2" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-					<img id="pokeball3" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-					<img id="pokeball4" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
-					<img id="pokeball5" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="">
+				<div class = "pokeballs" id="pokeballs">
+				<!-- pokeballs go here -->
 				</div>
 			</div>
-			<!-- Shows Koffing for every wrong guess -->
+			<!-- correct guess score board -->
+
+			<!-- wrong guess score board -->
 			<div class="lose_score">
 				<h1>Time up(s)</h1>
-				<div class="tepigs">
-					<img id="tepig1" class="img-responsive" src="assets/img/loss.png" alt="">
-					<img id="tepig2" class="img-responsive" src="assets/img/loss.png" alt="">
-					<img id="tepig3" class="img-responsive" src="assets/img/loss.png" alt="">
+				<div class="koffings" id="koffings">
+				<!--koffing images go here-->
 				</div>
 			</div>
+			<!-- wrong guess score board -->
+
 		</div>
+		<!-- end of scores -->
+
 		<!-- Title Heading -->
 		<div class="title_landing">
 			<img src="assets/img/title.png">
 		</div>
-		<!-- Displays random Pokemon -->
+
+		<!-- pokemon area -->
 		<div class="pokemon_image_area">
 			<img id="pokemonimage" src="">
 		</div>
-		<!-- Input form -->
+		<!-- pokemon area -->
+
+		<!-- input -->
 		<form class="input_form" role="" onsubmit="return false">
 		 	<input type="text" class="input form-control" id="inputPokemon" placeholder="Enter pokemon name">
 		 	<button type="button" class="btn btn-warning btn-lg" id="sendPokemon">Submit</button>
 		</form>					
+		<!-- input -->
 
 	</div><!-- /headerwrap -->
 

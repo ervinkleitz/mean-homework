@@ -24,7 +24,6 @@ console.log( 'Listening on Port 8888' );
 //Gets list of all pokemon in database
 request( 'http://pokeapi.co/api/v1/pokedex/1/', getData );
 
-
 //***** POST requests *****//
 app.post('/pokemon', getRandom );//post format from client: {alreadyShown: [array of shown pokemon]}
 app.post( '/guess', isRight );//post format from client: {guess: userchoice, correct: rightpokemon}

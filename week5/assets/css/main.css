@@ -13,6 +13,13 @@ body {
     font-weight: 300;
     font-size: 16px;
     color: #555;
+    background-image: url("../img/pokemon_background.jpg");
+    background-size: cover;
+    background-color: #3498db;
+
+    background-position: center ;
+    min-height: 60rem;
+    width: 100%;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -129,17 +136,6 @@ i {
     font-weight: bold;
 }
 
-/* HeaderWrap */
-#header, #index_header {
-    background-image: url("../img/pokemon_background.jpg");
-    background-size: cover;
-	background-color: #3498db;
-
-	background-position: center ;
-	min-height: 60rem;
-	width: 100%;
-}
-
 #header {
     padding-top: 120px;
 }
@@ -166,7 +162,7 @@ i {
     padding-right: 10px;
 }
 
-.tepigs img {
+.koffings img {
     height: 30px;
     display: inline-block;
     padding-right: 10px;
@@ -226,4 +222,8 @@ i {
 
 #pokemonimage {
     height: 300px;
+}
+
+footer {
+    padding-top: 1em;
 }

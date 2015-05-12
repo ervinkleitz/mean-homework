@@ -1,17 +1,34 @@
 $(document).ready(function(){
-	// Hides the sad Tepig images
-	document.getElementById('tepig1').style.visibility = 'hidden';
-	document.getElementById('tepig2').style.visibility = 'hidden';
-	document.getElementById('tepig3').style.visibility = 'hidden';
 
-	var pokemonName, path, guess;
-	var shownArray = ['test'];
-	var dataToPost = {'alreadyShown': shownArray };
-	var randomPokemon, pokemonPath;
-	var isRight = false;
-	var score = 0;
-	var didUserClick = false;
-	var alreadyChosenPokemon = [];
+	var pokemonName, path, guess,
+			shownArray = ['test'],
+			dataToPost = {'alreadyShown': shownArray },
+			randomPokemon, pokemonPath,
+			isRight = false,
+			score = 0,
+			didUserClick = false,
+			alreadyChosenPokemon = [],
+			pokeballHtml = '',
+			koffingHtml = '';
+
+	//***** start creating images for correct guess score (grey pokeballs) *****//
+	for ( var i = 1; i <= 5; i++ ){
+		pokeballHtml += '<img id="pokeball' + i +'" class="img-responsive" src="assets/img/gray_new_pokeball.png" alt="score">';
+	}
+	document.getElementById( 'pokeballs' ).innerHTML = pokeballHtml;
+	//***** end creating images for correct guess score (grey pokeballs) *****//
+
+	//***** start creating images for time-up score (grey pokeballs) *****//
+	for ( var j = 1; j <= 3; j++ ){
+		koffingHtml += '<img id="koffing' + j +'" class="img-responsive" src="assets/img/loss.png" alt="score">';
+	}
+	document.getElementById( 'koffings' ).innerHTML = koffingHtml;	
+	//***** end creating images for time-up score (grey pokeballs) *****//
+
+	// Hides the Koffing images (time ups)
+	document.getElementById('koffing1').style.visibility = 'hidden';
+	document.getElementById('koffing2').style.visibility = 'hidden';
+	document.getElementById('koffing3').style.visibility = 'hidden';
 
 	document.getElementById( 'sendPokemon' ).addEventListener( 'click', checkPokemon );
 
@@ -126,11 +143,11 @@ $(document).ready(function(){
 					losses++;
 					clearInterval( timer );
 					repeatCountdown();
-					// Makes a Tepig visible for each loss
+					// Makes a koffing visible for each loss
 					switch ( losses ) {
-						case 1: document.getElementById( 'tepig1' ).style.visibility = 'visible'; break;
-						case 2: document.getElementById( 'tepig2' ).style.visibility = 'visible'; break;
-						case 3: document.getElementById( 'tepig3' ).style.visibility = 'visible'; break;
+						case 1: document.getElementById( 'koffing1' ).style.visibility = 'visible'; break;
+						case 2: document.getElementById( 'koffing2' ).style.visibility = 'visible'; break;
+						case 3: document.getElementById( 'koffing3' ).style.visibility = 'visible'; break;
 						default: break;
 					}
 
