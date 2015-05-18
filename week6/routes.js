@@ -1,10 +1,13 @@
+//Author: Ervin Kleitz Gonzales//
+//*****************************//
+
 var express = require( 'express' ),
 		Song = require( './song-model' ),
 		router = express.Router();
 
 module.exports = exports = router;
 
-//get
+//home page, takes new song submission
 router.get( '/', function( req, res, next ){
 	res.render( 'home', {title: 'Home'} );
 });
@@ -45,25 +48,63 @@ router.post( '/tracks', function( req, res, next ){
 
 //displays newest songs
 router.get( '/newest', function( req, res, next ){
-//	res.render( 'list', {title: 'Newest'} );
 	Song.find( {}, function( err, data ){
 		var songList = [];
-		for ( var i = 0; i < data.length; i++ ){
+		//creates an array of the 20 newest tracks and places them in songList
+		for ( var i = 0; i < 20; i++ ) {
 			songList.push({
 				name: data[i].track_name,
 				artist: data[i].artist_name,
 				popularity: data[i].popularity,
 				date_submitted: data[i].time_submitted
 			});
-		}
-		songList = songList.sort(sortByDate);
-		console.log(songList);
+		} //end of for loop
+		//sorts array by date_submitted
+		songList = songList.sort( sortByDate );
 		res.render( 'list', {title: 'Newest', tracks: songList});
 	});
-	
 });
 
+//displays songs in order of popularity
+router.get( '/popular', function( req, res, next ){
+	Song.find( {}, function( err, data ){
+		var popularList = [];
+		//creates an array of the top 20 most popular songs
+		for ( var i = 0; i < 20; i++ ) {
+			popularList.push({
+				name: data[i].track_name,
+				artist: data[i].artist_name,
+				popularity: data[i].popularity,
+				date_submitted: data[i].time_submitted
+			});
+		}//end of for loop
+		popularList = popularList.sort( sortByPopularity );
+		res.render( 'list', {title: 'Popular', tracks: popularList});
+	});
+});
+
+//displays random song
+router.get( '/random', function ( req, res, next ) {
+	Song.find( {}, function ( err, data ) {
+		var randomSongIndex = Math.floor( Math.random() * data.length );
+		var randomSong = data[ randomSongIndex ];
+		res.render( 'single', {
+			title: 'Random', 
+			track: randomSong.track_name,
+			artist: randomSong.artist_name,
+			popularity: randomSong.popularity
+		});
+	});
+});
+
+//*********************//
 //***** functions *****//
+//*********************//
+
 function sortByDate( a, b ) { 
     return new Date( b.date_submitted ).getTime() - new Date( a.date_submitted ).getTime() 
+}
+
+function sortByPopularity (a, b){
+  return b.popularity - a.popularity
 }
