@@ -29,7 +29,6 @@ app.post('/pokemon', getRandom );//post format from client: {alreadyShown: [arra
 app.post( '/guess', isRight );//post format from client: {guess: userchoice, correct: rightpokemon}
 //***** POST requests *****//
 
-
 //Gets random pokemon and sends to client
 function getRandom( req, res ){
 	//Gets random Pokemon path, stores in a variable
@@ -42,13 +41,15 @@ function getRandom( req, res ){
 	}
 	pokemonUri = randomPokemon[ 'resource_uri' ];
 	//Gets Pokemon sprite path
-	pokemonImgPath = 'http://pokeapi.co/media/img/' + pokemonUri.substring(15, pokemonUri.length-1) + '.png';
+	pokemonImgPath = 'http://pokeapi.co/media/img/' + pokemonUri.substring(15, pokemonUri.length - 1) + '.png';
 	//adds pokemon to alredyShown array if it has not been shown
 	//Sends random pokemon and its image path to array to be sent to player
 	pokemonResponse.name = chosenPokemon; 
 	pokemonResponse.path = pokemonImgPath;
+	//server-side notifications
 	console.log('Received data from /pokemon: ' + req.body.alreadyShown);
 	console.log('Sending data to client: ' + JSON.stringify(pokemonResponse));
+	
 	res.send(JSON.stringify(pokemonResponse));
 }
 

@@ -1,5 +1,9 @@
-$(document).ready(function(){
+//*****************************************//
+//***** Author: Ervin Kleitz Gonzales *****//
+//*****************************************//
 
+$(document).ready(function(){
+//global declarations
 	var pokemonName, path, guess,
 			shownArray = ['test'],
 			dataToPost = {'alreadyShown': shownArray },
@@ -35,6 +39,10 @@ $(document).ready(function(){
 	getRandomPokemon();
 	mainTimer();
 
+
+	//***** FUNCTIONS *****//
+
+	
 	function getRandomPokemon(){
 		$.ajax({
 			method: 'POST',
