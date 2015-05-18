@@ -6,17 +6,17 @@ function submit() {
   var track_name = track_input.value;
   var artist_name = artist_input.value;
   if (track_name && artist_name) {
-    ajax('/tracks', 'POST', {track_name: track_name, artist_name: artist_name}, function (response) {
+    ajax('/favorite-song/tracks', 'POST', {track_name: track_name, artist_name: artist_name}, function (response) {
       track_input.value = '';
-      artist_input.value = '';
+      artist_input.value = '';		
       try {
-        if (JSON.parse(response).name) {
-          window.location.href = "/newest";
+        if (JSON.parse(response)) {
+          window.location.href = "/favorite-song/newest";
         } else {
           throw 'error';
         }
       } catch (e) {
-        error('Sorry, something went wrong. Please try again soon.');
+        error(e);
       }
     });
   } else {

@@ -7,7 +7,12 @@ var express = require( 'express' ),
 	expressHandlebars = require( 'express-handlebars' );
 
 mongoose.connect( 'mongodb://localhost/favorite-song' );
+app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));  
+app.set('view engine', 'handlebars'); 
 
+//***** middleware *****//
+app.use(express.static(__dirname + '/www'));
+app.use( bodyParser.json() );
 app.use( '/favorite-song', routes );
 //error handling
 app.use( function ( req, res, next ) {
@@ -26,6 +31,6 @@ app.use( function ( req, res, next ) {
 
 app.engine( 'handlebars', expressHandlebars({ defaultLayout: 'main'}));
 app.set( 'view engine', 'handlebars' );
-		
+
 app.listen( PORT );
 console.log( 'Listening on port ' + PORT );
