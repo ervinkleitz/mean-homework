@@ -1,3 +1,19 @@
+.addHeropanel{
+	overflow: hidden;
+	transition: height 1s;
+	-webkit-transition: 1s;
+}
+
 .heroImg {
-	max-height: 40rem;
+	padding-top: 1em;
+	height: 200px;
+	width: 200px;
+	margin: 0 auto;
+}
+
+.carousel {
+	height: 50rem;
+	width: 35rem;
+	margin: 0 auto;
+	background: none;
 }
