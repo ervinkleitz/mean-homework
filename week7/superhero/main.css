@@ -13,11 +13,7 @@ input, textarea {
 	width: 100%
 }
 
-btn {
-	background-color: red;
-}
-
-a:link {
+a {
   text-decoration: none;
 	text-transform: uppercase;
 }
@@ -52,7 +48,7 @@ ul {
 }
 
 .carousel{
-	width: 50em;
+	max-width: 50em;
 	height: 40em;
 	margin: 0 auto;
 	border-radius: 5px;
@@ -94,7 +90,7 @@ ul {
 	text-align: justify;
 	padding: 1em 3em;
 	height: 200px;
-	width: 30em;
+	max-width: 30em;
 	margin: 0 auto;
 	overflow: auto;
 }

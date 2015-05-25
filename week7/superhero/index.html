@@ -45,7 +45,7 @@
 					</div>
 					<!--	hero data -->
 					<section class="dataPanel">
-						<ul ng-show="show === 1" >
+						<ul ng-show="show === 1">
 							<li ng-repeat="item in hero.series | limitTo: 5">{{item.name}}</li>
 						</ul>
 						<p ng-show="show === 2">{{hero.description}}</p>
@@ -62,20 +62,13 @@
 		<div ng-show="showPanel === 3">
 			<carousel>
 				<slide ng-repeat="item in favorites">
+				<img ng-src="img/marvel-logo.png" class="img-responsive logo">
+					<a href="{{item.videoPath}}" target="_blank"><img ng-src="{{item.imgPath}}" class="heroImg img-responsive img-circle"></a>
 					<h1>{{item.name}}</h1>
-				</slide>
-			</carousel>
-			
-<!--
-			<carousel>
-				<slide ng-repeat="item in favorites">
-					<h1>test</h1>
-					<img ng-src="{{item.imgPath}}" class="img-responsive">
 					<p>{{item.description}}</p>
-					<video ng-src="{{item.videoPath}}">{{item.name}}</video>
+					<p>{{item.videoPath}}</p>
 				</slide>
 			</carousel>
--->
 		</div>
 		<!-- end of favorites -->
 	</div>

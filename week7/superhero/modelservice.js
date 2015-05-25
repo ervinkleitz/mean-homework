@@ -9,6 +9,7 @@ app.service( 'heroService', function( $http ){
 	};
 	
 	this.getFavorites = function(){
+		console.log(favorites);
 		if ( favorites.length === 0) alert( 'Favorites list is Empty' );
 		return favorites;
 	};
