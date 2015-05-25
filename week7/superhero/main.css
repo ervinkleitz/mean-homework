@@ -8,15 +8,32 @@ li, .heroSlides p, .carousel, .well {
 	color: white;
 }
 
+input, textarea {
+	color: black;
+	width: 100%
+}
+
+btn {
+	background-color: red;
+}
+
 a:link {
   text-decoration: none;
 	text-transform: uppercase;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
 }
 
 .navbar a {
 	margin: 2em;
 	color: white;
 }
+
 
 .navbar {
 	padding: 1em;
@@ -25,10 +42,13 @@ a:link {
 
 .nav, .well, .carousel{
 	background-color: black;
+	opacity: 0.95;
 }
 
 .well {
 	border: none;
+	max-width: 50em;
+	margin: 0 auto;
 }
 
 .carousel{
@@ -53,13 +73,11 @@ a:link {
 
 .carousel h1 {
 	font-size: 40px;
+	font-weight: bold;
 }
 
-ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	text-align: center;
+.heroData a {
+	padding-right: 1em;
 }
 
 .heroImg {
@@ -79,6 +97,10 @@ ul {
 	width: 30em;
 	margin: 0 auto;
 	overflow: auto;
+}
+
+.heroSlides .logo {
+	padding: 0.5em 0 0 1em;
 }
 
 .dataPanel{

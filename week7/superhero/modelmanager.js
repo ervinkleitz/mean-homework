@@ -10,8 +10,12 @@ app.service( 'modelManager', function( heroService ){
 	};
 	//	validates input if user has filled out the fields
 	this.validator = function(obj){
-		if ( obj.name && obj.description && obj.path && obj.userName ) return true;
+		if ( obj.name && obj.description && obj.imgPath && obj.videoPath && obj.userName ) return true;
 		else alert('Please fill out all the fields.');
+	};
+	
+	this.getFavoritesList = function(){
+		return heroService.getFavorites();
 	};
 		
 });

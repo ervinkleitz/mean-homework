@@ -13,30 +13,34 @@
 		<div class="nav navbar">
 			<a href="" ng-click="pullHeroes()">get heroes</a>
 			<a href="" ng-click="showAddSuperhero()">show panel</a>
+			<a href="" ng-click="pullFavorites()">favorites</a>
+			<a>Data provided by Marvel. © 2014 Marvel</a>
 		</div>
 		<!-- start add hero panel here -->
-		<div ng-show="superHeroPanel" class="well addHeroPanel animate-show">
+		<div ng-show="showPanel === 1" class="well addHeroPanel">
 			<p>Superhero</p>
 			<input type="text" placeholder="Superhero name here" ng-model="heroObj.name"><br><br>
 			<p>Description</p>
-			<input type="text" placeholder="Describe Superhero" ng-model="heroObj.description"><br><br>
+			<textarea placeholder="Describe Superhero" ng-model="heroObj.description"></textarea><br><br>
 			<p>Image Url</p>
-			<input type="text" placeholder="URL" ng-model="heroObj.path"><br><br>
+			<input type="text" placeholder="URL" ng-model="heroObj.imgPath"><br><br>
+			<p>Video Url</p>
+			<input type="text" placeholder="URL" ng-model="heroObj.videoPath"><br><br>
 			<p>Username</p>
 			<input type="text" placeholder="Username" ng-model="heroObj.userName"><br><br>
 			<button ng-click="addHero()" class="btn">Add Superhero</button>
 		</div>
 		<!-- end of add hero panel here -->
 		<!-- start heroes here -->
-		<div ng-show="carouselPanel" class="heroSlides">
+		<div ng-show="showPanel === 2" class="heroSlides">
 			<carousel>
 				<slide ng-repeat="hero in heroes" active="slide.active">
-					<img ng-src="img/marvel-logo.png" class="img-responsive">
+					<img ng-src="img/marvel-logo.png" class="img-responsive logo">
 					<img ng-src="{{hero.img}}" class="heroImg img-responsive img-circle">
 					<h1>{{hero.name}}</h1>
 					<div class="heroData row">
-						<a href="" ng-click="show = 1">Series |</a>
-						<a href="" ng-click="show = 2">Description |</a>
+						<a href="" ng-click="show = 1">Series</a>
+						<a href="" ng-click="show = 2">Description</a>
 						<a href="" ng-click="show = 3">Comics</a>
 					</div>
 					<!--	hero data -->
@@ -54,6 +58,26 @@
 			</carousel>
 		</div>
 		<!-- end of heroes here -->
+		<!-- start of favorites -->
+		<div ng-show="showPanel === 3">
+			<carousel>
+				<slide ng-repeat="item in favorites">
+					<h1>{{item.name}}</h1>
+				</slide>
+			</carousel>
+			
+<!--
+			<carousel>
+				<slide ng-repeat="item in favorites">
+					<h1>test</h1>
+					<img ng-src="{{item.imgPath}}" class="img-responsive">
+					<p>{{item.description}}</p>
+					<video ng-src="{{item.videoPath}}">{{item.name}}</video>
+				</slide>
+			</carousel>
+-->
+		</div>
+		<!-- end of favorites -->
 	</div>
 	
 	<!--scripts-->
