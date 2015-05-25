@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>My Furry Friends</title>
+	<title>Marvel Superheroes</title>
+	<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="main.css">
 </head>
-<body ng-app="myHeroes">
+<body ng-app="myHeroes" class="container">
 
-	<div ng-controller="myController" class="container">
-		<button ng-click="pullHeroes()" class="btn">Get heroes</button>
-		<button ng-click="showAddSuperhero()" class="btn btn-pill">Show Panel</button><hr>
+	<div ng-controller="myController" >
+		<div class="nav navbar">
+			<a href="" ng-click="pullHeroes()">get heroes</a>
+			<a href="" ng-click="showAddSuperhero()">show panel</a>
+		</div>
 		<!-- start add hero panel here -->
-		<div ng-show="superHeroPanel" class="well addHeroPanel">
+		<div ng-show="superHeroPanel" class="well addHeroPanel animate-show">
 			<p>Superhero</p>
 			<input type="text" placeholder="Superhero name here" ng-model="heroObj.name"><br><br>
 			<p>Description</p>
@@ -25,13 +28,28 @@
 		</div>
 		<!-- end of add hero panel here -->
 		<!-- start heroes here -->
-		<div class="heroSlides">
+		<div ng-show="carouselPanel" class="heroSlides">
 			<carousel>
-				<slide ng-repeat="hero in heroes">
+				<slide ng-repeat="hero in heroes" active="slide.active">
+					<img ng-src="img/marvel-logo.png" class="img-responsive">
 					<img ng-src="{{hero.img}}" class="heroImg img-responsive img-circle">
-					<h3>{{hero.name}}</h3>
-					<p>{{hero.description}}</p>
-<!--					<img src="img/star.png">-->
+					<h1>{{hero.name}}</h1>
+					<div class="heroData row">
+						<a href="" ng-click="show = 1">Series |</a>
+						<a href="" ng-click="show = 2">Description |</a>
+						<a href="" ng-click="show = 3">Comics</a>
+					</div>
+					<!--	hero data -->
+					<section class="dataPanel">
+						<ul ng-show="show === 1" >
+							<li ng-repeat="item in hero.series | limitTo: 5">{{item.name}}</li>
+						</ul>
+						<p ng-show="show === 2">{{hero.description}}</p>
+						<ul ng-show="show === 3">
+							<li ng-repeat="item in hero.comics | limitTo: 5">{{item.name}}</li>
+						</ul>
+					</section>
+					<!--	hero data -->
 				</slide>
 			</carousel>
 		</div>

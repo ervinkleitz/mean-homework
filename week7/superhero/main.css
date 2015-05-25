@@ -1,19 +1,86 @@
-.addHeropanel{
-	overflow: hidden;
-	transition: height 1s;
-	-webkit-transition: 1s;
+body{
+	font-family: 'Marvel', sans-serif;
+	background-color: darkred;
+	background-image: url("img/background.jpeg");
+}
+
+li, .heroSlides p, .carousel, .well {
+	color: white;
+}
+
+a:link {
+  text-decoration: none;
+	text-transform: uppercase;
+}
+
+.navbar a {
+	margin: 2em;
+	color: white;
+}
+
+.navbar {
+	padding: 1em;
+	width: 100%;
+}
+
+.nav, .well, .carousel{
+	background-color: black;
+}
+
+.well {
+	border: none;
+}
+
+.carousel{
+	width: 50em;
+	height: 40em;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+.carousel-control.left, .carousel-control.right {
+ 	background-image: none;
+}
+
+.carousel-indicators li { 
+	visibility: hidden; 
+}
+
+.carousel a {
+	color: darkred;
+	font-size: 25px;
+}
+
+.carousel h1 {
+	font-size: 40px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
 }
 
 .heroImg {
-	padding-top: 1em;
-	height: 200px;
+	max-height: 200px;
+	min-height: 200px;
 	width: 200px;
 	margin: 0 auto;
+	-moz-box-shadow: 0 0 10px red; 
+	-webkit-box-shadow: 0 0 10px red; 
+	box-shadow: 0 0 30px red; 
 }
 
-.carousel {
-	height: 50rem;
-	width: 35rem;
+.heroSlides p {
+	text-align: justify;
+	padding: 1em 3em;
+	height: 200px;
+	width: 30em;
 	margin: 0 auto;
-	background: none;
+	overflow: auto;
+}
+
+.dataPanel{
+	padding-top: 1em;
 }
