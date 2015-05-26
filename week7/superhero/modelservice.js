@@ -1,7 +1,6 @@
 app.service( 'heroService', function( $http ){
 	var heroes = [];
 	var favorites = [];
-	var background = [];
 	
 	this.getHeroes = function(){
 		this.pullFromMarvel();

@@ -90,7 +90,9 @@
 					<section class="dataPanel">
 						<p ng-show="showFave === 1">{{item.description}}</p>
 						<ul ng-show="showFave === 2" ng-repeat="video in item.videoPath">
-							<li class="favorite-links"><a href="{{video.path}}">Video {{video.position}}</a></li>
+							<li class="favorite-links">
+								<a ng-click="open($index)" href="">Video {{video.position}}</a>
+							</li>
 						</ul>
 					</section>
 					<!-- favorites data -->
@@ -111,6 +113,5 @@
 	<script src="app.js"></script>
 	<script src="modelservice.js"></script>
 	<script src="modelmanager.js"></script>
-
 </body>
 </html>
