@@ -10,6 +10,11 @@ body{
 	padding-top: 70px;
 }
 
+a {
+  text-decoration: none;
+	text-transform: uppercase;
+}
+
 li, .landing, .heroSlides p, .carousel, .well, .dataPanel a, .navbar a {
 	color: white;
 }
@@ -17,11 +22,6 @@ li, .landing, .heroSlides p, .carousel, .well, .dataPanel a, .navbar a {
 input, textarea {
 	color: black;
 	width: 100%
-}
-
-a {
-  text-decoration: none;
-	text-transform: uppercase;
 }
 
 ul {
@@ -45,7 +45,6 @@ ul {
 
 .nav, .well, .carousel{
 	background-color: black;
-	opacity: 0.95;
 }
 
 .well {
@@ -59,11 +58,11 @@ ul {
 	opacity: 0.9;
 	text-align: center;
 	font-weight: bold;
-	padding: 0.5em;
+	padding-bottom: 0.25em;
 }
 
 .landing h1 {
-	font-size: 10em;
+	font-size: 12em;
 	font-weight: 700;
 }
 
@@ -127,9 +126,8 @@ ul {
 	font-size: 12px;
 }
 
-footer a {
-	margin: 0;
-	color: yellow;
+.favorite-links a {
+	color: white;
 }
 
 .innershadow {

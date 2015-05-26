@@ -29,14 +29,23 @@ app.service( 'heroService', function( $http ){
 					obj.comics = hero.comics.items;
 					obj.series = hero.series.items;
 					heroes.push( obj );
+					
 				}
 			});
 	  });
 	};
 	//	end of getHeroes
 	//	adds hero to favorites array
-	this.addFavorite = function(obj){
+	this.addFavorite = function( obj ){
+		var newVideoPath = [];
+		var num = 1;
 		obj.videoPath = obj.videoPath.split(',');
+		obj.videoPath.forEach( function( video ) {
+			var newVideoPathObj = { path: video, position: num };
+			num++;
+			newVideoPath.push(newVideoPathObj);
+		});
+		obj.videoPath = newVideoPath;
 		console.log(obj.videoPath);
 		favorites.push(obj);
 		alert('Entry submitted');
