@@ -36,9 +36,7 @@ app.controller( 'myController' , function( $scope, modelManager, $modal ){
 	//	modal
 	$scope.open = function (index) {
 		//	saves current instance's video data in $scope.link
-		$scope.link = modelManager.getFavoritesList()[index].videoPath[0].path;
-		console.log($scope.link);
-		
+		$scope.link = modelManager.getFavoritesList()[index].videoPath[0].path;		
 		var modalInstance = $modal.open({
 			animation: $scope.animationsEnabled,
 			templateUrl: 'myModalContent.html',
@@ -53,10 +51,9 @@ app.controller( 'myController' , function( $scope, modelManager, $modal ){
 	};
 	
 });
-
+//	modal instance
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, url, $sce) {
 	$scope.path = $sce.trustAsResourceUrl(url.replace('watch?v=', 'embed/'));
-	console.log('url: ' + $scope.path);
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
