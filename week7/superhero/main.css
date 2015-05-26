@@ -2,9 +2,11 @@ body{
 	font-family: 'Marvel', sans-serif;
 	background-color: darkred;
 	background-image: url("img/background.jpeg");
+	min-height: 100%;
+	padding-top: 70px;
 }
 
-li, .heroSlides p, .carousel, .well {
+li, .landing, .heroSlides p, .carousel, .well, .dataPanel a, .navbar a {
 	color: white;
 }
 
@@ -25,15 +27,16 @@ ul {
 	text-align: center;
 }
 
-.navbar a {
+.navbar-fixed-top a {
 	margin: 2em;
-	color: white;
 }
 
+.navbar-fixed-top {
+	padding-bottom: 10em;
+}
 
 .navbar {
 	padding: 1em;
-	width: 100%;
 }
 
 .nav, .well, .carousel{
@@ -47,11 +50,23 @@ ul {
 	margin: 0 auto;
 }
 
+.landing {
+	background-color: darkred;
+	opacity: 0.9;
+	text-align: center;
+	font-weight: bold;
+	padding: 0.5em;
+}
+
+.landing h1 {
+	font-size: 10em;
+}
+
 .carousel{
 	max-width: 50em;
-	height: 40em;
+	height: 38em;
 	margin: 0 auto;
-	border-radius: 5px;
+	border-radius: 3px;
 }
 
 .carousel-control.left, .carousel-control.right {
@@ -73,7 +88,7 @@ ul {
 }
 
 .heroData a {
-	padding-right: 1em;
+	padding: 0 1em;
 }
 
 .heroImg {
@@ -86,7 +101,7 @@ ul {
 	box-shadow: 0 0 30px red; 
 }
 
-.heroSlides p {
+.heroSlides p, .favoriteSlides p {
 	text-align: justify;
 	padding: 1em 3em;
 	height: 200px;
@@ -95,10 +110,25 @@ ul {
 	overflow: auto;
 }
 
-.heroSlides .logo {
+.logo {
 	padding: 0.5em 0 0 1em;
 }
 
 .dataPanel{
 	padding-top: 1em;
+}
+
+.dataPanel a {
+	font-size: 12px;
+}
+
+footer a {
+	margin: 0;
+	color: yellow;
+}
+
+.innershadow {
+-moz-box-shadow: inset 0 0 10px #ccc;
+-webkit-box-shadow: inset 0 0 10px #ccc;
+box-shadow: inset 0 0 10px #ccc;
 }

@@ -9,7 +9,6 @@ app.service( 'heroService', function( $http ){
 	};
 	
 	this.getFavorites = function(){
-		console.log(favorites);
 		if ( favorites.length === 0) alert( 'Favorites list is Empty' );
 		return favorites;
 	};
@@ -37,6 +36,8 @@ app.service( 'heroService', function( $http ){
 	//	end of getHeroes
 	
 	this.addFavorite = function(obj){
+		obj.videoPath = obj.videoPath.split(',');
+		console.log(obj.videoPath);
 		favorites.push(obj);
 		alert('Entry submitted');
 		console.log(favorites);
