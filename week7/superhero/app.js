@@ -1,3 +1,5 @@
+//***** Author: Ervin Kleitz Gonzales *****//
+
 var app = angular.module( 'myHeroes', ['ui.bootstrap'] );
 
 app.controller( 'myController' , function( $scope, modelManager ){
@@ -15,7 +17,7 @@ app.controller( 'myController' , function( $scope, modelManager ){
 	  $scope.heroes = modelManager.getHeroesList();
 		$scope.carouselPanel = !$scope.carouselPanel;
   };
-	
+	//	gets favorites list
 	$scope.pullFavorites = function() {
 		$scope.showPanel = 3;
 		$scope.favorites = modelManager.getFavoritesList();
@@ -26,7 +28,7 @@ app.controller( 'myController' , function( $scope, modelManager ){
   $scope.showAddSuperhero = function(){
 		$scope.showPanel = 1;
   };
-
+	//	adds hero to favorites list
   $scope.addHero = function(){
 		$scope.favorites = modelManager.addHeroToList($scope.heroObj);
 		$scope.heroObj = {};

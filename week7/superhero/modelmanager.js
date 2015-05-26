@@ -1,5 +1,5 @@
 app.service( 'modelManager', function( heroService ){
-
+	//gets heroes list via Marvel API
 	this.getHeroesList = function(){
 		return heroService.getHeroes();
 	};
@@ -13,7 +13,7 @@ app.service( 'modelManager', function( heroService ){
 		if ( obj.name && obj.description && obj.imgPath && obj.videoPath && obj.userName ) return true;
 		else alert('Please fill out all the fields.');
 	};
-	
+	//	gets favorites array
 	this.getFavoritesList = function(){
 		return heroService.getFavorites();
 	};

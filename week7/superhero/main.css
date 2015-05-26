@@ -1,7 +1,11 @@
+/* Author: Ervin Kleitz Gonzales */
+
 body{
 	font-family: 'Marvel', sans-serif;
-	background-color: darkred;
+	background-color: black;
 	background-image: url("img/background.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
 	min-height: 100%;
 	padding-top: 70px;
 }

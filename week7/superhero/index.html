@@ -1,3 +1,7 @@
+<!-- ***************************** -->
+<!-- Author: Ervin Kleitz Gonzales -->
+<!-- ***************************** -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +12,21 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 <body ng-app="myHeroes" class="container">
-	<div ng-controller="myController" >
-		<div ng-show="showPanel === 0">
-			<div class="landing">
-				<h1>MARVEL COMICSdb</h1>
-				<p>an MVC Web App built with AngularJS</p>
-			</div>
-		</div>
+	<div ng-controller="myController">
+		<!--	navbar	-->
 		<div class="nav navbar navbar-fixed-top navbar-default">
 			<a href="" ng-click="pullHeroes()">get heroes</a>
 			<a href="" ng-click="pullFavorites()">favorites</a>
 			<a href="" ng-click="showAddSuperhero()">add favorite</a>
 		</div>
-		<!-- start add hero panel here -->
+		<!--	navbar	-->
+		<!--	landing	-->
+		<div ng-show="showPanel === 0" class="landing">
+			<h1>MARVEL COMICSdb</h1>
+			<p>an MVC Web App built with AngularJS</p>
+		</div>
+		<!--	landing	-->
+		<!-- start add hero panel -->
 		<div ng-show="showPanel === 1" class="well addHeroPanel innershadow">
 			<p>Superhero</p>
 			<input type="text" placeholder="Superhero name here" ng-model="heroObj.name"><br><br>
@@ -34,8 +40,8 @@
 			<input type="text" placeholder="Username" ng-model="heroObj.userName"><br><br>
 			<button ng-click="addHero()" class="btn-warning">Add Superhero</button>
 		</div>
-		<!-- end of add hero panel here -->
-		<!-- start heroes here -->
+		<!-- end of add hero panel -->
+		<!-- start of hero slides -->
 		<div ng-show="showPanel === 2" class="heroSlides">
 			<carousel class="innershadow">
 				<slide ng-repeat="hero in heroes" active="slide.active">
@@ -61,26 +67,28 @@
 				</slide>
 			</carousel>
 		</div>
-		<!-- end of heroes here -->
+		<!-- end of heroe slides -->
 		<!-- start of favorites -->
 		<div ng-show="showPanel === 3" class="favoriteSlides">
 			<carousel >
 				<slide ng-repeat="item in favorites">
-				<img ng-src="img/marvel-logo.png" class="img-responsive logo">
-					<a href="{{item.videoPath[0]}}" target="_blank"><img ng-src="{{item.imgPath}}" class="heroImg img-responsive img-circle"></a>
-				<!-- favorites links	-->
-				<h1>{{item.name}}</h1>
-				<div class="heroData row">
-					<a href="" ng-click="showFave = 1">description</a>
-					<a href="" ng-click="showFave = 2">videos</a>					
-				</div>
-				<!-- favorites links	-->
+					<img ng-src="img/marvel-logo.png" class="img-responsive logo">
+						<a href="{{item.videoPath[0]}}" target="_blank"><img ng-src="{{item.imgPath}}" class="heroImg img-responsive img-circle"></a>
+					<!-- favorites links	-->
+					<h1>{{item.name}}</h1>
+					<div class="heroData row">
+						<a href="" ng-click="showFave = 1">description</a>
+						<a href="" ng-click="showFave = 2">videos</a>					
+					</div>
+					<!-- favorites links	-->
+					<!-- favorites data -->
 					<section class="dataPanel">
 						<p ng-show="showFave === 1">{{item.description}}</p>
 						<ul ng-show="showFave === 2" ng-repeat="video in item.videoPath">
 							<li><a href="{{video}}">{{video}}</a></li>
 						</ul>
 					</section>
+					<!-- favorites data -->
 				</slide>
 			</carousel>
 		</div>
@@ -93,6 +101,8 @@
 	<script src="app.js"></script>
 	<script src="modelservice.js"></script>
 	<script src="modelmanager.js"></script>
-	<footer class="navbar nav navbar-fixed-bottom navbar-default">Data provided by <a href="http://marvel.com"> Marvel</a>. © 2014 </footer>
+	<footer class="navbar nav navbar-fixed-bottom navbar-default">
+		<span>Data provided by <a href="http://marvel.com"> Marvel</a>. © 2014. Background from background-kid.com</span>
+	</footer>
 </body>
 </html>

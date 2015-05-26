@@ -34,7 +34,7 @@ app.service( 'heroService', function( $http ){
 	  });
 	};
 	//	end of getHeroes
-	
+	//	adds hero to favorites array
 	this.addFavorite = function(obj){
 		obj.videoPath = obj.videoPath.split(',');
 		console.log(obj.videoPath);
