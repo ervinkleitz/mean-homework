@@ -6,12 +6,11 @@ app.controller( 'myController' , function( $scope, modelManager ){
   $scope.heroes = [];
 	$scope.favorites = [];
   $scope.heroObj = {};
-	$scope.background = [];
 	$scope.show = 1;
 	$scope.showFave = 1;
 	$scope.showPanel = 0;
 
-  //	calls function that fetches list of Superheroes from Marvel API
+  //	calls function that fetches list of Superheroes from Marvel.com
   $scope.pullHeroes = function(){
 		$scope.showPanel = 2;
 	  $scope.heroes = modelManager.getHeroesList();

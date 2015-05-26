@@ -7,7 +7,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Marvel Superheroes</title>
-	<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="main.css">
 </head>
@@ -22,10 +23,12 @@
 		<!--	navbar	-->
 		<!--	landing	-->
 		<div ng-show="showPanel === 0" class="landing">
-			<h1>MARVEL COMICSdb</h1>
-			<p>an MVC Web App built with AngularJS</p>
+			<h1>MARVELdb</h1>
+			<h2>an MVC Web App built with AngularJS</h2>
+			<p>Data provided by Marvel.com</p>
 		</div>
 		<!--	landing	-->
+		
 		<!-- start add hero panel -->
 		<div ng-show="showPanel === 1" class="well addHeroPanel innershadow">
 			<p>Superhero</p>
@@ -41,6 +44,7 @@
 			<button ng-click="addHero()" class="btn-warning">Add Superhero</button>
 		</div>
 		<!-- end of add hero panel -->
+		
 		<!-- start of hero slides -->
 		<div ng-show="showPanel === 2" class="heroSlides">
 			<carousel class="innershadow">
@@ -68,6 +72,7 @@
 			</carousel>
 		</div>
 		<!-- end of heroe slides -->
+		
 		<!-- start of favorites -->
 		<div ng-show="showPanel === 3" class="favoriteSlides">
 			<carousel >
@@ -93,7 +98,12 @@
 			</carousel>
 		</div>
 		<!-- end of favorites -->
+		
 	</div>
+	
+	<footer class="navbar nav navbar-fixed-bottom navbar-default">
+		<span>Data provided by <a href="http://marvel.com"> Marvel</a>. © 2014. Background from background-kid.com</span>
+	</footer>
 	
 	<!--scripts-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -101,8 +111,6 @@
 	<script src="app.js"></script>
 	<script src="modelservice.js"></script>
 	<script src="modelmanager.js"></script>
-	<footer class="navbar nav navbar-fixed-bottom navbar-default">
-		<span>Data provided by <a href="http://marvel.com"> Marvel</a>. © 2014. Background from background-kid.com</span>
-	</footer>
+
 </body>
 </html>
