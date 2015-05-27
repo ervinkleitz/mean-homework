@@ -3,14 +3,10 @@
 var app = angular.module( 'myHeroes', ['ui.bootstrap'] );
 
 app.controller( 'myController' , function( $scope, modelManager, $modal ){
-  $scope.heroes = [];
-	$scope.favorites = [];
-  $scope.heroObj = {};
 	$scope.show = 1;
 	$scope.showFave = 1;
 	$scope.showPanel = 0;
 	$scope.animationsEnabled = true;
-	$scope.links = [];
 
   //	calls function that fetches list of Superheroes from Marvel.com
   $scope.pullHeroes = function(){
