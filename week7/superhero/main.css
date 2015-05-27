@@ -43,8 +43,14 @@ ul {
 	padding: 1em;
 }
 
-.nav, .well, .carousel{
+.nav, .well, .carousel {
 	background-color: black;
+}
+
+.alert {
+	max-width: 25em;
+	margin: 0.5em auto;
+	text-align: center;
 }
 
 .well {

@@ -8,7 +8,7 @@ app.service( 'heroService', function( $http ){
 	};
 	
 	this.getFavorites = function(){
-		if ( favorites.length === 0) alert( 'Favorites list is Empty' );
+		if ( favorites.length === 0) return null;
 		return favorites;
 	};
 	
@@ -21,14 +21,13 @@ app.service( 'heroService', function( $http ){
 				var obj = {};
 				//	checks if properties are null or if image is not available
 				//	and ignores them
-				if ( hero.name && hero.thumbnail && hero.thumbnail.path.indexOf('image_not_available') === -1) {
+				if ( hero.comics && hero.name && hero.thumbnail && hero.thumbnail.path.indexOf('image_not_available') === -1) {
 					obj.description = hero.description;
 					obj.name = hero.name;
 					obj.img = hero.thumbnail.path + '.' + hero.thumbnail.extension;
 					obj.comics = hero.comics.items;
 					obj.series = hero.series.items;
 					heroes.push( obj );
-					
 				}
 			});
 	  });
@@ -46,8 +45,6 @@ app.service( 'heroService', function( $http ){
 		});
 		obj.videoPath = newVideoPath;
 		favorites.push(obj);
-		alert('Entry submitted');
-		console.log( 'New favorites array: ' + favorites );
 	};
 	
 });
