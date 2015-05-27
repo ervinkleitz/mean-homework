@@ -45,6 +45,7 @@ app.service( 'heroService', function( $http ){
 		});
 		obj.videoPath = newVideoPath;
 		favorites.push(obj);
+		console.log(favorites);
 	};
 	
 });
