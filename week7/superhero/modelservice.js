@@ -47,5 +47,5 @@ app.service( 'heroService', function( $http ){
 		favorites.push(obj);
 		console.log(favorites);
 	};
-	
+
 });

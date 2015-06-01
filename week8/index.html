@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cloud Sale</title>
+</head>
+<body>
+	<div>
+		Name: <input type="text" placeholder="Name" ng-model="item.name"><br>
+		Price: <input type="text" placeholder="Price" ng-model="item.price | currency"><br>
+		Image: <input type="text" placeholder="Img URL" ng-model="item.imgPath"><br>
+		Condition: <br><input type="radio" name="condition" value="used" ng-model="item.condition" checked> Used<br>
+			<input type="radio" name="condition" value="used" ng-model="item.condition"> New<br>
+		Description: <br><textarea ng-model="item.description" placeholder="Description"></textarea>
+	</div>
+	
+</body>
+</html>
